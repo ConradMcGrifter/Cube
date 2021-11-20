@@ -18,6 +18,7 @@ axios(zendikarRising)
             const img = $(this).find("img").attr("src");
             const cmc = $(this).find(".convertedManaCost").text();
             const color = $(this).find(".manaCost").find("img + img").attr("alt");
+            const colorFixed = $(this).find(".manaCost").find("img").attr("alt");
             const type = $(this).find(".typeLine").text();
 
             const imgFixed = img.replace("../..", "https://gatherer.wizards.com");
@@ -81,15 +82,26 @@ axios(zendikarRising)
                     return ele;
                 }
             });
+
             // console.log(typeFinal);
 
-            cards.push({
-                ["name"]: name,
-                ["image"]: imgFixed,
-                ["cmc"]: cmc,
-                ["color"]: color,
-                ["type"]: typeFinal[0],
-            });
+            if (color === undefined) {
+                cards.push({
+                    ["name"]: name,
+                    ["image"]: imgFixed,
+                    ["cmc"]: cmc,
+                    ["color"]: colorFixed,
+                    ["type"]: typeFinal[0],
+                });
+            } else {
+                cards.push({
+                    ["name"]: name,
+                    ["image"]: imgFixed,
+                    ["cmc"]: cmc,
+                    ["color"]: color,
+                    ["type"]: typeFinal[0],
+                });
+            }
         });
         console.log(cards);
     })

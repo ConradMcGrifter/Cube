@@ -38,7 +38,7 @@ const zendikarRising = [
         name: "Akoum Hellhound",
         image: "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=491772&type=card",
         cmc: "1",
-        color: undefined,
+        color: "Red",
         type: "Creature",
     },
     {
@@ -101,7 +101,7 @@ const zendikarRising = [
         name: "Archpriest of Iona",
         image: "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=491626&type=card",
         cmc: "1",
-        color: undefined,
+        color: "White",
         type: "Creature",
     },
     {
@@ -178,7 +178,7 @@ const zendikarRising = [
         name: "Blood Beckoning",
         image: "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=491727&type=card",
         cmc: "1",
-        color: undefined,
+        color: "Black",
         type: "Sorcery",
     },
     {
@@ -192,7 +192,7 @@ const zendikarRising = [
         name: "Bloodchief's Thirst",
         image: "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=491729&type=card",
         cmc: "1",
-        color: undefined,
+        color: "Black",
         type: "Sorcery",
     },
     {
@@ -234,7 +234,7 @@ const zendikarRising = [
         name: "Bubble Snare",
         image: "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=491675&type=card",
         cmc: "1",
-        color: undefined,
+        color: "Blue",
         type: "Enchantmen",
     },
     {
@@ -269,7 +269,7 @@ const zendikarRising = [
         name: "Chilling Trap",
         image: "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=491678&type=card",
         cmc: "1",
-        color: undefined,
+        color: "Blue",
         type: "Instant",
     },
     {
@@ -311,7 +311,7 @@ const zendikarRising = [
         name: "Cliffhaven Kitesail",
         image: "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=491894&type=card",
         cmc: "1",
-        color: undefined,
+        color: "1",
         type: "Artifac",
     },
     {
@@ -325,7 +325,7 @@ const zendikarRising = [
         name: "Concerted Defense",
         image: "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=491680&type=card",
         cmc: "1",
-        color: undefined,
+        color: "Blue",
         type: "Instant",
     },
     {
@@ -528,7 +528,7 @@ const zendikarRising = [
         name: "Fireblade Charger",
         image: "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=491779&type=card",
         cmc: "1",
-        color: undefined,
+        color: "Red",
         type: "Creature",
     },
     {
@@ -543,13 +543,13 @@ const zendikarRising = [
         image: "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=491936&type=card",
         cmc: "0",
         color: undefined,
-        type: "Lan",
+        type: "Land",
     },
     {
         name: "Forsaken Monument",
         image: "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=491895&type=card",
         cmc: "5",
-        color: undefined,
+        color: "5",
         type: "Artifact",
     },
     {
