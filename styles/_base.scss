@@ -4,7 +4,27 @@ html {
     font-size: 62.5%;
 }
 
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+}
+
 body {
+    width: 100%;
     font-size: 1.6rem;
     background: lightsalmon;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card {
+    height: 300px;
+    width: 200px;
+    background-color: red;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: 1rem;
 }
