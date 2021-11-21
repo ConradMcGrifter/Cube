@@ -10,6 +10,8 @@ html {
 *::after {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
 }
 
 body {
@@ -25,14 +27,25 @@ body {
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1rem;
 }
 
 .card {
-  height: 300px;
-  width: 200px;
-  background-color: red;
+  height: 265px;
+  width: 190px;
   background-size: contain;
   background-repeat: no-repeat;
   margin-left: 1rem;
+  margin-top: 1rem;
+  -webkit-transition: -webkit-transform 0.25s;
+  transition: -webkit-transform 0.25s;
+  transition: transform 0.25s;
+  transition: transform 0.25s, -webkit-transform 0.25s;
 }
 /*# sourceMappingURL=main.css.map */
