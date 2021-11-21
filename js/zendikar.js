@@ -334,7 +334,7 @@ export const zendikarRising_page1 = [
         image: "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=491681&type=card",
         cmc: "2",
         color: "Blue",
-        type: undefined,
+        type: "Enchantment",
     },
     {
         name: "Coralhelm Chronicler",
@@ -516,7 +516,7 @@ export const zendikarRising_page1 = [
         image: "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=491638&type=card",
         cmc: "4",
         color: "White",
-        type: undefined,
+        type: "Enchantment",
     },
     {
         name: "Field Research",
@@ -728,7 +728,7 @@ const zendikarRising_page2 = [
         image: "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=491639&type=card",
         cmc: "5",
         color: "White",
-        type: undefined,
+        type: "Enchantment",
     },
     {
         name: "Jwari Disruption",
@@ -1423,14 +1423,14 @@ const zendikarRising_page3 = [
         image: "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=491797&type=card",
         cmc: "2",
         color: "Red",
-        type: undefined,
+        type: "Enchantment",
     },
     {
         name: "Roost of Drakes",
         image: "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=491704&type=card",
         cmc: "1",
         color: "Blue",
-        type: undefined,
+        type: "Enchantment",
     },
     {
         name: "Ruin Crab",
@@ -2032,7 +2032,7 @@ const zendikarRising_page3 = [
         image: "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=491820&type=card",
         cmc: "3",
         color: "Red",
-        type: undefined,
+        type: "Enchantment",
     },
     {
         name: "Valakut Stoneforge",

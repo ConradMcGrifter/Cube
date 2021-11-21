@@ -58,11 +58,11 @@ axios(zendikarRising_page1)
             });
 
             const filteredAgain = filtered.map((word) => {
-                if (word === "Creature") {
+                if (word.match(/(Creature)/)) {
                     return "Creature";
                 }
 
-                if (word === "Enchantment") {
+                if (word.match(/(Enchantment)/)) {
                     return "Enchantment";
                 }
 
@@ -141,11 +141,11 @@ axios(zendikarRising_page2)
             });
 
             const filteredAgain = filtered.map((word) => {
-                if (word === "Creature") {
+                if (word.match(/(Creature)/)) {
                     return "Creature";
                 }
 
-                if (word === "Enchantment") {
+                if (word.match(/(Enchantment)/)) {
                     return "Enchantment";
                 }
 
@@ -224,11 +224,11 @@ axios(zendikarRising_page3)
             });
 
             const filteredAgain = filtered.map((word) => {
-                if (word === "Creature") {
+                if (word.match(/(Creature)/)) {
                     return "Creature";
                 }
 
-                if (word === "Enchantment") {
+                if (word.match(/(Enchantment)/)) {
                     return "Enchantment";
                 }
 
@@ -307,11 +307,11 @@ axios(zendikarRising_page4)
             });
 
             const filteredAgain = filtered.map((word) => {
-                if (word === "Creature") {
+                if (word.match(/(Creature)/)) {
                     return "Creature";
                 }
 
-                if (word === "Enchantment") {
+                if (word.match(/(Enchantment)/)) {
                     return "Enchantment";
                 }
 

@@ -76,7 +76,7 @@ function createElement(cardName) {
 }
 
 for (let i = 0; i < detailedCube.length; i++) {
-    createElement(sortedCube_ColorType[i].name);
+    createElement(detailedCube[i].name);
 }
 
 // --- end of testing ---
