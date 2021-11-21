@@ -1,6 +1,7 @@
 import { zendikarRisingObj, zendikarRising, zendikarRising_page1 } from "./zendikar.js";
 import { adventureForgottenRealms, adventureForgottenRealmsObj } from "./AFR.js";
 import { kaldheim, kaldheimObj } from "./kaldheim.js";
+import { core2021, core2021Obj } from "./core2021.js";
 import { cube } from "./cube.js";
 
 // console.log(adventureForgottenRealmsObj["Guardian of Faith"]);
@@ -18,6 +19,10 @@ let detailedCube = cube
 
         if (kaldheimObj[card]) {
             return { ...kaldheimObj[card], ["name"]: card };
+        }
+
+        if (core2021Obj[card]) {
+            return { ...core2021Obj[card], ["name"]: card };
         }
     })
     .filter((card) => {
@@ -38,6 +43,7 @@ let detailedCubeObj = detailedCube.reduce((acc, card) => {
     };
 }, {});
 
+console.log(detailedCube.length);
 // console.log(detailedCube);
 // console.log(detailedCubeObj["Disenchant"]);
 

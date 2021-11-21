@@ -467,7 +467,7 @@ const kaldheim_page1 = [
         image: "https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=503693&type=card",
         cmc: "4",
         color: "Black",
-        type: undefined,
+        type: "Enchantment",
     },
     {
         name: "Doomskar",
