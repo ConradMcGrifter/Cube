@@ -2,6 +2,7 @@ import { zendikarRisingObj, zendikarRising, zendikarRising_page1 } from "./zendi
 import { adventureForgottenRealms, adventureForgottenRealmsObj } from "./AFR.js";
 import { kaldheim, kaldheimObj } from "./kaldheim.js";
 import { core2021, core2021Obj } from "./core2021.js";
+import { ikoria, ikoriaObj } from "./ikoria.js";
 import { cube } from "./cube.js";
 
 // console.log(adventureForgottenRealmsObj["Guardian of Faith"]);
@@ -23,6 +24,12 @@ let detailedCube = cube
 
         if (core2021Obj[card]) {
             return { ...core2021Obj[card], ["name"]: card };
+        }
+
+        if (ikoriaObj[card]) {
+            return { ...ikoriaObj[card], ["name"]: card };
+        } else {
+            console.log(card);
         }
     })
     .filter((card) => {
@@ -65,9 +72,24 @@ function compareColor(a, b) {
     }
     return 0;
 }
-const sortedCube_Type = detailedCube.sort(compareType);
-const sortedCube_ColorType = sortedCube_Type.sort(compareColor);
+function compareCMC(a, b) {
+    if (a.cmc < b.cmc) {
+        return -1;
+    }
+    if (a.cmc > b.cmc) {
+        return 1;
+    }
+    return 0;
+}
+
+const cubeCopy = [...detailedCube];
+const sortedCube_CMC = cubeCopy.sort(compareCMC);
+const sortedCube_Type = cubeCopy.sort(compareType);
+const sortedCube_Color = cubeCopy.sort(compareColor);
+// const sortedCube_ColorType = sortedCube_Type.sort(compareColor);
+// const sortedCube_ColorTypeCMC = sortedCube_ColorType.sort(compareCMC);
 // console.log(sortedCube_ColorType);
+
 // --- testing card creation---
 
 function createElement(cardName) {
@@ -82,7 +104,7 @@ function createElement(cardName) {
 }
 
 for (let i = 0; i < detailedCube.length; i++) {
-    createElement(detailedCube[i].name);
+    createElement(cubeCopy[i].name);
 }
 
 // --- end of testing ---
