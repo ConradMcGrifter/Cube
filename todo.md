@@ -1,3 +1,3 @@
 // finish scraping other sets and building arrays
-// add logic to the detailedCube (main.js) that checks the other sets for the card name of each card in the cube. currently it is only checking zendikar cards
-// add compare function for cmc then sort one of the already sorted arrays using that function?
+
+// copy to clipboard the entire cube https://stackoverflow.com/questions/5142674/how-do-i-put-an-array-in-a-textarea-putting-each-element-on-its-own-line

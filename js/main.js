@@ -109,11 +109,7 @@ let detailedCubeObj = allCards.reduce((acc, card) => {
     };
 }, {});
 
-console.log(detailedCubeObj["Alpine Houndmaster"]);
 console.log(detailedCube.length);
-
-// console.log(detailedCube);
-console.log(detailedGoldCards[0]);
 
 function compareType(a, b) {
     if (a.type < b.type) {
@@ -153,17 +149,31 @@ const sortedCube_Color = sortedCube.sort(compareColor);
 function createElement(cardName) {
     const card = document.createElement("div");
     card.classList.add("card");
-    document.body.append(card);
     card.style.backgroundImage = `url(${detailedCubeObj[cardName].image})`;
 
-    if (detailedCubeObj[cardName].color == "Red") {
-        card.classList.add("red");
-        console.log("red");
-    }
+    // add class names based on the card's property value -- this is for filtering
+    card.classList.add(detailedCubeObj[cardName].color.toLowerCase());
+    card.classList.add(detailedCubeObj[cardName].type.toLowerCase());
+
+    document.body.append(card);
 }
 
-for (let i = 0; i < detailedCube.length; i++) {
+for (let i = 0; i < allCards.length; i++) {
     createElement(sortedCube[i].name);
 }
 
+// let filterWhite = allCards.filter((card) => {
+//     if (card.color === "White") {
+//         return card;
+//     }
+// });
+
 // --- end of testing ---
+
+let cards = document.querySelectorAll(".card");
+
+// cards.forEach((card) => {
+//     if (!card.classList.contains("white")) {
+//         card.classList.toggle("displayNone");
+//     }
+// });

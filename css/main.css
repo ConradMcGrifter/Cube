@@ -39,6 +39,7 @@ body {
 .card {
   height: 265px;
   width: 190px;
+  background-image: url("../cardback.jpeg");
   background-size: contain;
   background-repeat: no-repeat;
   margin-left: 1rem;
@@ -47,5 +48,9 @@ body {
   transition: -webkit-transform 0.25s;
   transition: transform 0.25s;
   transition: transform 0.25s, -webkit-transform 0.25s;
+}
+
+.card.displayNone {
+  display: none;
 }
 /*# sourceMappingURL=main.css.map */

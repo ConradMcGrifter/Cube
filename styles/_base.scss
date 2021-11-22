@@ -27,7 +27,8 @@ body {
 .card {
     height: 265px;
     width: 190px;
-    // background-color: red;
+    // background-color: lightseagreen;
+    background-image: url("../cardback.jpeg");
     background-size: contain;
     background-repeat: no-repeat;
     margin-left: 1rem;
@@ -38,4 +39,8 @@ body {
     //     transform: scale(125%);
     //     box-shadow: 2px 5px 15px rgba(17, 17, 17, 0.822);
     // }
+
+    &.displayNone {
+        display: none;
+    }
 }
