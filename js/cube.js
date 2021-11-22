@@ -52,7 +52,7 @@ export const cube = [
     "Bolt Bend",
     "Thundering Rebuke",
     "Roil Eruption",
-    "Turn to slag",
+    "Turn to Slag",
     "Fire Prophecy",
     "Blindblast",
     "Furious Rise",
@@ -257,7 +257,7 @@ export const cube = [
     "Depart the Realm",
     "Opt",
     "Vodalian Arcanist",
-    "You Find the Villain's Lair",
+    "You Find the Villains' Lair",
     "Windrider Wizard",
     "Roaming Ghostlight",
     "Air-Cult Elemental",
@@ -349,6 +349,7 @@ export const dualLands = [
 ];
 
 export const artifacts = [
+    "Springjaw Trap",
     "Short Sword",
     "Goldvein Pick",
     "Relic Axe",

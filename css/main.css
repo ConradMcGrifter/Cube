@@ -53,4 +53,15 @@ body {
 .card.displayNone {
   display: none;
 }
+
+#cubeText {
+  position: absolute;
+  top: -1000rem;
+  left: -1000rem;
+}
+
+#copyClipboard {
+  padding: 1rem 2rem;
+  background-color: white;
+}
 /*# sourceMappingURL=main.css.map */

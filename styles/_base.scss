@@ -44,3 +44,15 @@ body {
         display: none;
     }
 }
+
+#cubeText {
+    // visibility: hidden;
+    position: absolute;
+    top: -1000rem;
+    left: -1000rem;
+}
+
+#copyClipboard {
+    padding: 1rem 2rem;
+    background-color: white;
+}

@@ -10,6 +10,38 @@ import { cube, goldCards, dualLands, artifacts } from "./cube.js";
 const textArea = document.getElementById("cubeText");
 const exportCube = cube.concat(goldCards, dualLands, artifacts);
 
+//------------------------------------------------------------------
+// Fisher-Yates shuffle function -- used to shuffle arrays
+//------------------------------------------------------------------
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+
+    return array;
+}
+//------------------------------------------------------------------
+let shuffledCube = shuffle(exportCube);
+
+let i = 15;
+while (i < shuffledCube.length) {
+    console.log(i);
+    shuffledCube.splice(i, 0, "\r");
+    i++;
+    i += 15;
+}
+
+const copyButton = document.getElementById("copyClipboard");
+console.log(exportCube.length);
+textArea.value = shuffledCube.join("\n");
+copyClipboard.addEventListener("click", () => {
+    textArea.select();
+    document.execCommand("copy");
+    copyButton.innerText = "Copied!";
+    copyButton.style.backgroundColor = "lightBlue";
+});
+
 // the gold cards are going to have the wrong color value --> need to get each gold card and change color value to "gold"
 // have an array of all the gold card names --> when checking each set for the card --> check if the card name matches a card in the gold cards array --> if it does --> return an object with the color property set to gold
 let regex = /[1-9]|(undefined)/g;
@@ -77,7 +109,7 @@ let detailedCube = cube
         }
     });
 
-// check the gold cards array
+// check the gold cards array + fix color
 let detailedGoldCards = goldCards
     .map((card) => {
         if (zendikarRisingObj[card]) {
@@ -217,7 +249,7 @@ const sortedCube_Color = sortedCube.sort(compareColor);
 function createElement(cardName) {
     const card = document.createElement("div");
     card.classList.add("card");
-    card.style.backgroundImage = `url(${detailedCubeObj[cardName].image})`;
+    // card.style.backgroundImage = `url(${detailedCubeObj[cardName].image})`;
 
     // add class names based on the card's property value -- this is for filtering
     if (detailedCubeObj[cardName].color == undefined) {
