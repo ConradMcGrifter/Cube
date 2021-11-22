@@ -249,7 +249,7 @@ const sortedCube_Color = sortedCube.sort(compareColor);
 function createElement(cardName) {
     const card = document.createElement("div");
     card.classList.add("card");
-    // card.style.backgroundImage = `url(${detailedCubeObj[cardName].image})`;
+    card.style.backgroundImage = `url(${detailedCubeObj[cardName].image})`;
 
     // add class names based on the card's property value -- this is for filtering
     if (detailedCubeObj[cardName].color == undefined) {
