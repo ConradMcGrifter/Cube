@@ -1,4 +1,3 @@
-//---------- Zendikar Rising ----------
 export const ikoria_page1 = [
     {
         name: "Adaptive Shimmerer",
