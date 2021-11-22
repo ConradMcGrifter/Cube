@@ -5,38 +5,62 @@ import { core2021, core2021Obj } from "./core2021.js";
 import { ikoria, ikoriaObj } from "./ikoria.js";
 import { warOfTheSpark, warOfTheSparkObj } from "./warOfTheSpark.js";
 import { masters25, masters25Obj } from "./masters25.js";
-import { cube, goldCards } from "./cube.js";
+import { cube, goldCards, dualLands, artifacts } from "./cube.js";
 
 // the gold cards are going to have the wrong color value --> need to get each gold card and change color value to "gold"
 // have an array of all the gold card names --> when checking each set for the card --> check if the card name matches a card in the gold cards array --> if it does --> return an object with the color property set to gold
+let regex = /[a-z]/gi;
+
 let detailedCube = cube
+    .concat(dualLands, artifacts)
     .map((card) => {
         if (zendikarRisingObj[card]) {
+            if (!regex.test(zendikarRisingObj[card].color)) {
+                zendikarRisingObj[card].color = "Colorless";
+            }
             return { ...zendikarRisingObj[card], ["name"]: card };
         }
 
         // add an if statement here to check kaldheim / AFR , etc... just like the above code
         if (adventureForgottenRealmsObj[card]) {
+            if (!regex.test(adventureForgottenRealmsObj[card].color)) {
+                adventureForgottenRealmsObj[card].color = "Colorless";
+            }
             return { ...adventureForgottenRealmsObj[card], ["name"]: card };
         }
 
         if (kaldheimObj[card]) {
+            if (!regex.test(kaldheimObj[card].color)) {
+                kaldheimObj[card].color = "Colorless";
+            }
             return { ...kaldheimObj[card], ["name"]: card };
         }
 
         if (core2021Obj[card]) {
+            if (!regex.test(core2021Obj[card].color)) {
+                core2021Obj[card].color = "Colorless";
+            }
             return { ...core2021Obj[card], ["name"]: card };
         }
 
         if (ikoriaObj[card]) {
+            if (!regex.test(ikoriaObj[card].color)) {
+                ikoriaObj[card].color = "Colorless";
+            }
             return { ...ikoriaObj[card], ["name"]: card };
         }
 
         if (warOfTheSparkObj[card]) {
+            if (!regex.test(warOfTheSparkObj[card].color)) {
+                warOfTheSparkObj[card].color = "Colorless";
+            }
             return { ...warOfTheSparkObj[card], ["name"]: card };
         }
 
         if (masters25Obj[card]) {
+            if (!regex.test(masters25Obj[card].color)) {
+                masters25Obj[card].color = "Colorless";
+            }
             return { ...masters25Obj[card], ["name"]: card };
         } else {
             console.log(card);
@@ -109,8 +133,6 @@ let detailedCubeObj = allCards.reduce((acc, card) => {
     };
 }, {});
 
-console.log(detailedCube.length);
-
 function compareType(a, b) {
     if (a.type < b.type) {
         return -1;
@@ -152,7 +174,11 @@ function createElement(cardName) {
     card.style.backgroundImage = `url(${detailedCubeObj[cardName].image})`;
 
     // add class names based on the card's property value -- this is for filtering
-    card.classList.add(detailedCubeObj[cardName].color.toLowerCase());
+    if (detailedCubeObj[cardName].color == undefined) {
+        card.classList.add("z");
+    } else {
+        card.classList.add(detailedCubeObj[cardName].color.toLowerCase());
+    }
     card.classList.add(detailedCubeObj[cardName].type.toLowerCase());
 
     document.body.append(card);
