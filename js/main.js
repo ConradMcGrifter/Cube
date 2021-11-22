@@ -7,61 +7,65 @@ import { warOfTheSpark, warOfTheSparkObj } from "./warOfTheSpark.js";
 import { masters25, masters25Obj } from "./masters25.js";
 import { cube, goldCards, dualLands, artifacts } from "./cube.js";
 
+const textArea = document.getElementById("cubeText");
+const exportCube = cube.concat(goldCards, dualLands, artifacts);
+
 // the gold cards are going to have the wrong color value --> need to get each gold card and change color value to "gold"
 // have an array of all the gold card names --> when checking each set for the card --> check if the card name matches a card in the gold cards array --> if it does --> return an object with the color property set to gold
-let regex = /\W/g;
+let regex = /[1-9]|(undefined)/g;
 
 let detailedCube = cube
-    .concat(artifacts)
     .map((card) => {
         if (zendikarRisingObj[card]) {
-            if (regex.test(zendikarRisingObj[card].color)) {
-                zendikarRisingObj[card].color = "Colorless";
-                // console.log(zendikarRisingObj[card].color, " - ", zendikarRisingObj[card]);
-            }
+            // if (regex.test(zendikarRisingObj[card].color)) {
+            //     zendikarRisingObj[card].color = "Colorless";
+            //     console.log(zendikarRisingObj[card].color, " - ", zendikarRisingObj[card]);
+            // }
             return { ...zendikarRisingObj[card], ["name"]: card };
         }
 
         // add an if statement here to check kaldheim / AFR , etc... just like the above code
         if (adventureForgottenRealmsObj[card]) {
-            if (regex.test(adventureForgottenRealmsObj[card].color)) {
-                adventureForgottenRealmsObj[card].color = "Colorless";
-            }
+            // if (regex.test(adventureForgottenRealmsObj[card].color)) {
+            //     adventureForgottenRealmsObj[card].color = "Colorless";
+            // }
             return { ...adventureForgottenRealmsObj[card], ["name"]: card };
         }
 
         if (kaldheimObj[card]) {
-            if (regex.test(kaldheimObj[card].color)) {
-                kaldheimObj[card].color = "Colorless";
-            }
+            // if (regex.test(kaldheimObj[card].color)) {
+            //     kaldheimObj[card].color = "Colorless";
+            // }
             return { ...kaldheimObj[card], ["name"]: card };
         }
 
         if (core2021Obj[card]) {
-            if (regex.test(core2021Obj[card].color)) {
-                core2021Obj[card].color = "Colorless";
-            }
+            // if (regex.test(core2021Obj[card].color)) {
+            //     core2021Obj[card].color = "Colorless";
+            //     // console.log(core2021Obj[card].color, " - ", core2021Obj[card]);
+            // }
+
             return { ...core2021Obj[card], ["name"]: card };
         }
 
         if (ikoriaObj[card]) {
-            if (regex.test(ikoriaObj[card].color)) {
-                ikoriaObj[card].color = "Colorless";
-            }
+            // if (regex.test(ikoriaObj[card].color)) {
+            //     ikoriaObj[card].color = "Colorless";
+            // }
             return { ...ikoriaObj[card], ["name"]: card };
         }
 
         if (warOfTheSparkObj[card]) {
-            if (regex.test(warOfTheSparkObj[card].color)) {
-                warOfTheSparkObj[card].color = "Colorless";
-            }
+            // if (regex.test(warOfTheSparkObj[card].color)) {
+            //     warOfTheSparkObj[card].color = "Colorless";
+            // }
             return { ...warOfTheSparkObj[card], ["name"]: card };
         }
 
         if (masters25Obj[card]) {
-            if (regex.test(masters25Obj[card].color)) {
-                masters25Obj[card].color = "Colorless";
-            }
+            // if (regex.test(masters25Obj[card].color)) {
+            //     masters25Obj[card].color = "Colorless";
+            // }
             return { ...masters25Obj[card], ["name"]: card };
         } else {
             console.log(card);
@@ -120,7 +124,48 @@ let detailedGoldCards = goldCards
         }
     });
 
-const allCards = detailedCube.concat(detailedGoldCards);
+// check colorless artifacts + fix undefined color
+let detailedColorless = artifacts.map((card) => {
+    if (zendikarRisingObj[card]) {
+        zendikarRisingObj[card].color = "Colorless";
+        return { ...zendikarRisingObj[card], ["name"]: card };
+    }
+
+    // add an if statement here to check kaldheim / AFR , etc... just like the above code
+    if (adventureForgottenRealmsObj[card]) {
+        adventureForgottenRealmsObj[card].color = "Colorless";
+        return { ...adventureForgottenRealmsObj[card], ["name"]: card };
+    }
+
+    if (kaldheimObj[card]) {
+        kaldheimObj[card].color = "Colorless";
+        return { ...kaldheimObj[card], ["name"]: card };
+    }
+
+    if (core2021Obj[card]) {
+        core2021Obj[card].color = "Colorless";
+        return { ...core2021Obj[card], ["name"]: card };
+    }
+
+    if (ikoriaObj[card]) {
+        ikoriaObj[card].color = "Colorless";
+        return { ...ikoriaObj[card], ["name"]: card };
+    }
+
+    if (warOfTheSparkObj[card]) {
+        warOfTheSparkObj[card].color = "Colorless";
+        return { ...warOfTheSparkObj[card], ["name"]: card };
+    }
+
+    if (masters25Obj[card]) {
+        masters25Obj[card].color = "Colorless";
+        return { ...masters25Obj[card], ["name"]: card };
+    } else {
+        console.log(card);
+    }
+});
+
+const allCards = detailedCube.concat(detailedGoldCards, detailedColorless);
 
 let detailedCubeObj = allCards.reduce((acc, card) => {
     return {
@@ -204,3 +249,18 @@ let cards = document.querySelectorAll(".card");
 //         card.classList.toggle("displayNone");
 //     }
 // });
+
+// ---------------------
+let colorless = allCards.filter((card) => {
+    return card.color === "Colorless";
+});
+let lands = allCards.filter((card) => {
+    return card.type === "Land";
+});
+
+let colorlessArtifacts = allCards.filter((card) => {
+    return card.type === "Artifact";
+});
+
+console.log(colorlessArtifacts);
+// console.log(colorlessArtifacts);
