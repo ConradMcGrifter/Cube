@@ -2,8 +2,8 @@ import { cube, goldCards, dualLands, artifacts } from "./cube.js";
 
 export function copyToClipboardAndShuffle() {
     const textArea = document.getElementById("cubeText");
-    const exportCube = cube.concat(goldCards, dualLands, artifacts);
     const copyButton = document.getElementById("copyClipboard");
+    const exportCube = cube.concat(goldCards, dualLands, artifacts);
 
     //------------------------------------------------------------------
     // Fisher-Yates shuffle function -- used to shuffle arrays
@@ -33,8 +33,4 @@ export function copyToClipboardAndShuffle() {
         copyButton.innerText = "Copied!";
         copyButton.style.backgroundColor = "lightBlue";
     });
-}
-
-export function testFunc() {
-    console.log("hi");
 }

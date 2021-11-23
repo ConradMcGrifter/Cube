@@ -7,39 +7,10 @@ import { warOfTheSpark, warOfTheSparkObj } from "./warOfTheSpark.js";
 import { masters25, masters25Obj } from "./masters25.js";
 import { cube, goldCards, dualLands, artifacts } from "./cube.js";
 import { copyToClipboardAndShuffle } from "./copyToClipboard.js";
+
+// shuffle the cube and put the results in a text area so the user can copy the list to clipboard
+
 copyToClipboardAndShuffle();
-// const textArea = document.getElementById("cubeText");
-// const exportCube = cube.concat(goldCards, dualLands, artifacts);
-
-// //------------------------------------------------------------------
-// // Fisher-Yates shuffle function -- used to shuffle arrays
-// //------------------------------------------------------------------
-// function shuffle(array) {
-//     for (let i = array.length - 1; i > 0; i--) {
-//         let j = Math.floor(Math.random() * (i + 1));
-//         [array[i], array[j]] = [array[j], array[i]];
-//     }
-
-//     return array;
-// }
-// //------------------------------------------------------------------
-// let shuffledCube = shuffle(exportCube);
-
-// let i = 15;
-// while (i < shuffledCube.length) {
-//     shuffledCube.splice(i, 0, "\r");
-//     i++;
-//     i += 15;
-// }
-
-// const copyButton = document.getElementById("copyClipboard");
-// textArea.value = shuffledCube.join("\n");
-// copyClipboard.addEventListener("click", () => {
-//     textArea.select();
-//     document.execCommand("copy");
-//     copyButton.innerText = "Copied!";
-//     copyButton.style.backgroundColor = "lightBlue";
-// });
 
 // let regex = /[1-9]|(undefined)/g;
 
@@ -249,7 +220,7 @@ const sortedCube_Color = sortedCube.sort(compareColor);
 function createElement(cardName) {
     const card = document.createElement("div");
     card.classList.add("card");
-    // card.style.backgroundImage = `url(${detailedCubeObj[cardName].image})`;
+    card.style.backgroundImage = `url(${detailedCubeObj[cardName].image})`;
 
     // add class names based on the card's property value -- this is for filtering
     if (detailedCubeObj[cardName].color == undefined) {
