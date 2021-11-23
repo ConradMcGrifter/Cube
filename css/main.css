@@ -33,12 +33,12 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 1rem;
 }
 
 .card {
   height: 265px;
   width: 190px;
+  border-radius: 1rem;
   background-image: url("../cardback.jpeg");
   background-size: contain;
   background-repeat: no-repeat;
@@ -48,6 +48,13 @@ body {
   transition: -webkit-transform 0.25s;
   transition: transform 0.25s;
   transition: transform 0.25s, -webkit-transform 0.25s;
+}
+
+.card:hover {
+  -webkit-transform: scale(125%);
+          transform: scale(125%);
+  -webkit-box-shadow: 2px 5px 15px rgba(17, 17, 17, 0.822);
+          box-shadow: 2px 5px 15px rgba(17, 17, 17, 0.822);
 }
 
 .card.displayNone {
@@ -63,5 +70,73 @@ body {
 #copyClipboard {
   padding: 1rem 2rem;
   background-color: white;
+}
+
+.site-grid {
+  min-height: 100%;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "s m";
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+  -ms-grid-columns: 1fr 6fr;
+      grid-template-columns: 1fr 6fr;
+}
+
+.side-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: s;
+}
+
+.main-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: m;
+}
+
+.cards--container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.side-bar-content--wrap {
+  margin-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 1rem;
 }
 /*# sourceMappingURL=main.css.map */

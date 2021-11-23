@@ -21,13 +21,15 @@ body {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem;
 }
 
 .card {
     height: 265px;
     width: 190px;
+    // height: 250px;
+    // width: 175px;
     // background-color: lightseagreen;
+    border-radius: 1rem;
     background-image: url("../cardback.jpeg");
     background-size: contain;
     background-repeat: no-repeat;
@@ -35,10 +37,10 @@ body {
     margin-top: 1rem;
     transition: transform 0.25s;
 
-    // &:hover {
-    //     transform: scale(125%);
-    //     box-shadow: 2px 5px 15px rgba(17, 17, 17, 0.822);
-    // }
+    &:hover {
+        transform: scale(125%);
+        box-shadow: 2px 5px 15px rgba(17, 17, 17, 0.822);
+    }
 
     &.displayNone {
         display: none;

@@ -1,0 +1,23 @@
+.site-grid {
+    min-height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-areas: "s m";
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 6fr;
+}
+
+.side-bar {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    // background: red;
+    grid-area: s;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    // background: blue;
+    grid-area: m;
+}

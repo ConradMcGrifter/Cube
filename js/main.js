@@ -230,7 +230,7 @@ function createElement(cardName) {
     }
     card.classList.add(detailedCubeObj[cardName].type.toLowerCase());
 
-    document.body.append(card);
+    document.querySelector(".cards--container").append(card);
 }
 
 for (let i = 0; i < allCards.length; i++) {
