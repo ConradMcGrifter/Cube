@@ -6,46 +6,44 @@ import { ikoria, ikoriaObj } from "./ikoria.js";
 import { warOfTheSpark, warOfTheSparkObj } from "./warOfTheSpark.js";
 import { masters25, masters25Obj } from "./masters25.js";
 import { cube, goldCards, dualLands, artifacts } from "./cube.js";
+import { copyToClipboardAndShuffle } from "./copyToClipboard.js";
+copyToClipboardAndShuffle();
+// const textArea = document.getElementById("cubeText");
+// const exportCube = cube.concat(goldCards, dualLands, artifacts);
 
-const textArea = document.getElementById("cubeText");
-const exportCube = cube.concat(goldCards, dualLands, artifacts);
+// //------------------------------------------------------------------
+// // Fisher-Yates shuffle function -- used to shuffle arrays
+// //------------------------------------------------------------------
+// function shuffle(array) {
+//     for (let i = array.length - 1; i > 0; i--) {
+//         let j = Math.floor(Math.random() * (i + 1));
+//         [array[i], array[j]] = [array[j], array[i]];
+//     }
 
-//------------------------------------------------------------------
-// Fisher-Yates shuffle function -- used to shuffle arrays
-//------------------------------------------------------------------
-function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
+//     return array;
+// }
+// //------------------------------------------------------------------
+// let shuffledCube = shuffle(exportCube);
 
-    return array;
-}
-//------------------------------------------------------------------
-let shuffledCube = shuffle(exportCube);
+// let i = 15;
+// while (i < shuffledCube.length) {
+//     shuffledCube.splice(i, 0, "\r");
+//     i++;
+//     i += 15;
+// }
 
-let i = 15;
-while (i < shuffledCube.length) {
-    console.log(i);
-    shuffledCube.splice(i, 0, "\r");
-    i++;
-    i += 15;
-}
+// const copyButton = document.getElementById("copyClipboard");
+// textArea.value = shuffledCube.join("\n");
+// copyClipboard.addEventListener("click", () => {
+//     textArea.select();
+//     document.execCommand("copy");
+//     copyButton.innerText = "Copied!";
+//     copyButton.style.backgroundColor = "lightBlue";
+// });
 
-const copyButton = document.getElementById("copyClipboard");
-console.log(exportCube.length);
-textArea.value = shuffledCube.join("\n");
-copyClipboard.addEventListener("click", () => {
-    textArea.select();
-    document.execCommand("copy");
-    copyButton.innerText = "Copied!";
-    copyButton.style.backgroundColor = "lightBlue";
-});
+// let regex = /[1-9]|(undefined)/g;
 
-// the gold cards are going to have the wrong color value --> need to get each gold card and change color value to "gold"
-// have an array of all the gold card names --> when checking each set for the card --> check if the card name matches a card in the gold cards array --> if it does --> return an object with the color property set to gold
-let regex = /[1-9]|(undefined)/g;
-
+// create card objects for the cards in the cube array
 let detailedCube = cube
     .map((card) => {
         if (zendikarRisingObj[card]) {
@@ -109,7 +107,7 @@ let detailedCube = cube
         }
     });
 
-// check the gold cards array + fix color
+// create card objects of the gold cards array + fix color
 let detailedGoldCards = goldCards
     .map((card) => {
         if (zendikarRisingObj[card]) {
@@ -156,7 +154,7 @@ let detailedGoldCards = goldCards
         }
     });
 
-// check colorless artifacts + fix undefined color
+// create card objects of colorless artifacts + fix undefined color
 let detailedColorless = artifacts.map((card) => {
     if (zendikarRisingObj[card]) {
         zendikarRisingObj[card].color = "Colorless";
@@ -197,8 +195,10 @@ let detailedColorless = artifacts.map((card) => {
     }
 });
 
+// combine all the card objects into an array
 const allCards = detailedCube.concat(detailedGoldCards, detailedColorless);
 
+// create an object from the allCards array with the card name as the
 let detailedCubeObj = allCards.reduce((acc, card) => {
     return {
         ...acc,
@@ -249,7 +249,7 @@ const sortedCube_Color = sortedCube.sort(compareColor);
 function createElement(cardName) {
     const card = document.createElement("div");
     card.classList.add("card");
-    card.style.backgroundImage = `url(${detailedCubeObj[cardName].image})`;
+    // card.style.backgroundImage = `url(${detailedCubeObj[cardName].image})`;
 
     // add class names based on the card's property value -- this is for filtering
     if (detailedCubeObj[cardName].color == undefined) {
@@ -281,18 +281,3 @@ let cards = document.querySelectorAll(".card");
 //         card.classList.toggle("displayNone");
 //     }
 // });
-
-// ---------------------
-let colorless = allCards.filter((card) => {
-    return card.color === "Colorless";
-});
-let lands = allCards.filter((card) => {
-    return card.type === "Land";
-});
-
-let colorlessArtifacts = allCards.filter((card) => {
-    return card.type === "Artifact";
-});
-
-console.log(colorlessArtifacts);
-// console.log(colorlessArtifacts);
