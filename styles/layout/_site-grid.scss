@@ -1,11 +1,10 @@
 .site-grid {
-    min-height: 100vh;
-
+    min-height: 100%;
     width: 100%;
     display: grid;
     grid-template-areas: "s m";
     grid-template-rows: auto;
-    grid-template-columns: 1fr 6fr;
+    grid-template-columns: 1fr 7fr;
 }
 
 .side-bar {
@@ -17,10 +16,10 @@
 }
 
 .main-content {
-    // min-height: 100%;
+    min-height: 100%;
     display: flex;
     justify-content: center;
-    padding: 2rem;
+    padding: 2rem 2rem 40rem 2rem;
     // background: lightblue;
     grid-area: m;
 }

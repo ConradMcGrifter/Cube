@@ -217,42 +217,56 @@ const sortedCube_Color = sortedCube.sort(compareColor);
 // --- testing card creation---
 
 function createElement(cardName) {
-    const card = document.createElement("div");
+    const card = document.createElement("img");
+    const cardWrap = document.createElement("div");
+    cardWrap.classList.add("card--wrap");
     card.classList.add("card");
-    card.classList.add("displayNone");
-    card.style.backgroundImage = `url(${detailedCubeObj[cardName].image})`;
+    cardWrap.classList.add("displayNone");
+    card.setAttribute("src", `${detailedCubeObj[cardName].image}`);
+    // card.setAttribute("src", "../cardback.jpeg");
+
+    cardWrap.style.setProperty("--image", `url(${detailedCubeObj[cardName].image})`);
+    // card.style.backgroundImage = `url(${detailedCubeObj[cardName].image})`;
 
     // add class names based on the card's property value -- this is for filtering
     if (detailedCubeObj[cardName].color == undefined) {
-        card.classList.add("z");
+        cardWrap.classList.add("z");
     } else {
-        card.classList.add(detailedCubeObj[cardName].color.toLowerCase());
+        cardWrap.classList.add(detailedCubeObj[cardName].color.toLowerCase());
     }
-    card.classList.add(detailedCubeObj[cardName].type.toLowerCase());
+    cardWrap.classList.add(detailedCubeObj[cardName].type.toLowerCase());
 
     if (detailedCubeObj[cardName].cmc == "1") {
-        document.querySelector(".cmc-one").append(card);
+        document.querySelector(".cmc-one").append(cardWrap);
+        cardWrap.append(card);
     }
     if (detailedCubeObj[cardName].cmc == "2") {
-        document.querySelector(".cmc-two").append(card);
+        document.querySelector(".cmc-two").append(cardWrap);
+        cardWrap.append(card);
     }
     if (detailedCubeObj[cardName].cmc == "3") {
-        document.querySelector(".cmc-three").append(card);
+        document.querySelector(".cmc-three").append(cardWrap);
+        cardWrap.append(card);
     }
     if (detailedCubeObj[cardName].cmc == "4") {
-        document.querySelector(".cmc-four").append(card);
+        document.querySelector(".cmc-four").append(cardWrap);
+        cardWrap.append(card);
     }
     if (detailedCubeObj[cardName].cmc == "5") {
-        document.querySelector(".cmc-five").append(card);
+        document.querySelector(".cmc-five").append(cardWrap);
+        cardWrap.append(card);
     }
     if (detailedCubeObj[cardName].cmc == "6") {
-        document.querySelector(".cmc-six").append(card);
+        document.querySelector(".cmc-six").append(cardWrap);
+        cardWrap.append(card);
     }
     if (detailedCubeObj[cardName].cmc == "7") {
-        document.querySelector(".cmc-six").append(card);
+        document.querySelector(".cmc-six").append(cardWrap);
+        cardWrap.append(card);
     }
     if (detailedCubeObj[cardName].cmc == "8") {
-        document.querySelector(".cmc-six").append(card);
+        document.querySelector(".cmc-six").append(cardWrap);
+        cardWrap.append(card);
     }
 }
 
@@ -260,7 +274,7 @@ for (let i = 0; i < allCards.length; i++) {
     createElement(sortedCube[i].name);
 }
 
-let cards = document.querySelectorAll(".card");
+let cards = document.querySelectorAll(".card--wrap");
 
 // ---------- Filtering ----------
 
