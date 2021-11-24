@@ -354,6 +354,9 @@ function filterAndDisplay(color) {
     });
 }
 
+// display red cards by default when page loads...
+filterAndDisplay("red");
+
 FILTER_RED.addEventListener("click", () => {
     filterAndDisplay("red");
 });
