@@ -59,6 +59,7 @@ body {
           box-shadow: 2px 5px 25px black;
   color: white;
   line-height: 0;
+  pointer-events: none;
 }
 
 #cubeText {
@@ -188,6 +189,7 @@ body {
           box-shadow: 2px 5px 25px black;
   color: white;
   line-height: 0;
+  pointer-events: none;
 }
 
 .side-bar-content--wrap {
