@@ -172,7 +172,6 @@ body {
   margin: 0;
 }
 
-.cmc-four .card--wrap:hover::before,
 .cmc-five .card--wrap:hover::before,
 .cmc-six .card--wrap:hover::before {
   border: solid gold 3px;
