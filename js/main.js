@@ -9,7 +9,6 @@ import { cube, goldCards, dualLands, artifacts } from "./cube.js";
 import { copyToClipboardAndShuffle } from "./copyToClipboard.js";
 
 // shuffle the cube and put the results in a text area so the user can copy the list to clipboard
-
 copyToClipboardAndShuffle();
 
 // let regex = /[1-9]|(undefined)/g;
@@ -220,6 +219,7 @@ const sortedCube_Color = sortedCube.sort(compareColor);
 function createElement(cardName) {
     const card = document.createElement("div");
     card.classList.add("card");
+    card.classList.add("displayNone");
     card.style.backgroundImage = `url(${detailedCubeObj[cardName].image})`;
 
     // add class names based on the card's property value -- this is for filtering
@@ -230,25 +230,132 @@ function createElement(cardName) {
     }
     card.classList.add(detailedCubeObj[cardName].type.toLowerCase());
 
-    document.querySelector(".cards--container").append(card);
+    if (detailedCubeObj[cardName].cmc == "1") {
+        document.querySelector(".cmc-one").append(card);
+    }
+    if (detailedCubeObj[cardName].cmc == "2") {
+        document.querySelector(".cmc-two").append(card);
+    }
+    if (detailedCubeObj[cardName].cmc == "3") {
+        document.querySelector(".cmc-three").append(card);
+    }
+    if (detailedCubeObj[cardName].cmc == "4") {
+        document.querySelector(".cmc-four").append(card);
+    }
+    if (detailedCubeObj[cardName].cmc == "5") {
+        document.querySelector(".cmc-five").append(card);
+    }
+    if (detailedCubeObj[cardName].cmc == "6") {
+        document.querySelector(".cmc-six").append(card);
+    }
+    if (detailedCubeObj[cardName].cmc == "7") {
+        document.querySelector(".cmc-six").append(card);
+    }
+    if (detailedCubeObj[cardName].cmc == "8") {
+        document.querySelector(".cmc-six").append(card);
+    }
 }
 
 for (let i = 0; i < allCards.length; i++) {
     createElement(sortedCube[i].name);
 }
 
-// let filterWhite = allCards.filter((card) => {
-//     if (card.color === "White") {
-//         return card;
-//     }
-// });
-
-// --- end of testing ---
-
 let cards = document.querySelectorAll(".card");
 
-// cards.forEach((card) => {
-//     if (!card.classList.contains("white")) {
-//         card.classList.toggle("displayNone");
-//     }
-// });
+// ---------- Filtering ----------
+
+const FILTER_RED = document.getElementById("filter-red");
+const FILTER_BLUE = document.getElementById("filter-blue");
+const FILTER_BLACK = document.getElementById("filter-black");
+const FILTER_WHITE = document.getElementById("filter-white");
+const FILTER_GREEN = document.getElementById("filter-green");
+
+function filterAndDisplay(color) {
+    let cardElementArr = [];
+    cards.forEach((card) => {
+        if (!card.classList.contains(color)) {
+            card.classList.add("displayNone");
+        } else {
+            card.classList.remove("displayNone");
+            cardElementArr.push(card);
+        }
+    });
+
+    // get all card elements within the column with class name "cmc-one"
+    let cmcOne = document.querySelector(".cmc-one").querySelectorAll("." + color);
+    let cmcTwo = document.querySelector(".cmc-two").querySelectorAll("." + color);
+    let cmcThree = document.querySelector(".cmc-three").querySelectorAll("." + color);
+    let cmcFour = document.querySelector(".cmc-four").querySelectorAll("." + color);
+    let cmcFive = document.querySelector(".cmc-five").querySelectorAll("." + color);
+    let cmcSix = document.querySelector(".cmc-six").querySelectorAll("." + color);
+
+    // cmcOne.forEach((card, index) => {
+    //     card.style.top = "-" + index * 235 + "px";
+    // });
+
+    // cmcTwo.forEach((card, index) => {
+    //     card.style.top = "-" + index * 235 + "px";
+    // });
+
+    // cmcThree.forEach((card, index) => {
+    //     card.style.top = "-" + index * 235 + "px";
+    // });
+
+    // cmcFour.forEach((card, index) => {
+    //     card.style.top = "-" + index * 235 + "px";
+    // });
+
+    // cmcFive.forEach((card, index) => {
+    //     card.style.top = "-" + index * 235 + "px";
+    // });
+
+    // cmcSix.forEach((card, index) => {
+    //     card.style.top = "-" + index * 235 + "px";
+    // });
+    // ---------
+    // ---------
+    // ---------
+    cmcOne.forEach((card, index) => {
+        card.style.gridRow = index + 1 + "/" + (index + 2);
+    });
+
+    cmcTwo.forEach((card, index) => {
+        card.style.gridRow = index + 1 + "/" + (index + 2);
+    });
+
+    cmcThree.forEach((card, index) => {
+        card.style.gridRow = index + 1 + "/" + (index + 2);
+    });
+
+    cmcFour.forEach((card, index) => {
+        card.style.gridRow = index + 1 + "/" + (index + 2);
+    });
+
+    cmcFive.forEach((card, index) => {
+        card.style.gridRow = index + 1 + "/" + (index + 2);
+    });
+
+    cmcSix.forEach((card, index) => {
+        card.style.gridRow = index + 1 + "/" + (index + 2);
+    });
+}
+
+FILTER_RED.addEventListener("click", () => {
+    filterAndDisplay("red");
+});
+
+FILTER_BLUE.addEventListener("click", () => {
+    filterAndDisplay("blue");
+});
+
+FILTER_BLACK.addEventListener("click", () => {
+    filterAndDisplay("black");
+});
+
+FILTER_WHITE.addEventListener("click", () => {
+    filterAndDisplay("white");
+});
+
+FILTER_GREEN.addEventListener("click", () => {
+    filterAndDisplay("green");
+});
