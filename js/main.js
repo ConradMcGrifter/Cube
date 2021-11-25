@@ -289,6 +289,8 @@ const FILTER_GREEN = document.getElementById("filter-green");
 const FILTER_CREATURE = document.getElementById("filter-creature");
 const FILTER_INSTANT = document.getElementById("filter-instant");
 const FILTER_SORCERY = document.getElementById("filter-sorcery");
+const FILTER_ENCHANTMENT = document.getElementById("filter-enchantment");
+const FILTER_ARTIFACT = document.getElementById("filter-artifact");
 const SHOW_ALL = document.getElementById("filter-all");
 
 function filterAndDisplayColor(color) {
@@ -340,6 +342,13 @@ function checkTypeFilters(color) {
     if (FILTER_SORCERY.checked) {
         filterAndDisplayType("sorcery");
     }
+    if (FILTER_ENCHANTMENT.checked) {
+        filterAndDisplayType("enchantment");
+        console.log("test");
+    }
+    if (FILTER_ARTIFACT.checked) {
+        filterAndDisplayType("artifact");
+    }
     if (SHOW_ALL.checked) {
         filterAndDisplayColor(color);
     }
@@ -360,6 +369,14 @@ FILTER_INSTANT.addEventListener("click", () => {
 
 FILTER_SORCERY.addEventListener("click", () => {
     filterAndDisplayType("sorcery");
+});
+
+FILTER_ENCHANTMENT.addEventListener("click", () => {
+    filterAndDisplayType("enchantment");
+});
+
+FILTER_ARTIFACT.addEventListener("click", () => {
+    filterAndDisplayType("artifact");
 });
 
 SHOW_ALL.addEventListener("click", () => {
