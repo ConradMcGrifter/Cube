@@ -30,6 +30,17 @@ button {
   margin-top: 1rem;
 }
 
+#cubeText {
+  position: absolute;
+  top: -1000rem;
+  left: -1000rem;
+}
+
+#copyClipboard {
+  padding: 1rem 2rem;
+  background-color: white;
+}
+
 .card--wrap {
   width: 100%;
   display: -webkit-box;
@@ -41,10 +52,6 @@ button {
   width: 100%;
   height: 100%;
   cursor: pointer;
-  -webkit-transition: -webkit-transform 0.25s;
-  transition: -webkit-transform 0.25s;
-  transition: transform 0.25s;
-  transition: transform 0.25s, -webkit-transform 0.25s;
 }
 
 .card--wrap > .card:hover {
@@ -58,7 +65,8 @@ button {
 .card--wrap:hover::before {
   border: solid gold 3px;
   border-radius: 1.55rem;
-  content: var(--image, "hello");
+  content: var(--image, url("../images/cardback.jpeg"));
+  background-color: black;
   display: block;
   position: absolute;
   z-index: 999;
@@ -72,15 +80,12 @@ button {
   pointer-events: none;
 }
 
-#cubeText {
-  position: absolute;
-  top: -1000rem;
-  left: -1000rem;
-}
-
-#copyClipboard {
-  padding: 1rem 2rem;
-  background-color: white;
+.card {
+  width: 100%;
+  width: 195px;
+  height: 260px;
+  margin: 0;
+  border-radius: 1rem;
 }
 
 .site-grid {
@@ -142,17 +147,6 @@ button {
   height: 100%;
   width: 100%;
   position: relative;
-}
-
-.column .card {
-  width: 100%;
-  width: 195px;
-  height: 260px;
-  position: relative;
-  top: 0;
-  left: 0;
-  margin: 0;
-  border-radius: 1rem;
 }
 
 .cmc-one,

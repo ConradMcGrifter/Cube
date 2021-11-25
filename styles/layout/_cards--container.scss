@@ -1,38 +1,20 @@
 .cards--container {
     width: 100%;
     max-width: 1250px;
-    // display: flex;
-    // flex-wrap: wrap;
-    // justify-content: center;
     display: grid;
     grid-template-areas: "1 2 3 4 5 6";
     grid-template-rows: auto;
     grid-template-columns: repeat(6, 1fr);
     gap: 1rem;
-    // outline: solid black 2px;
 }
 
 .column {
     height: 100%;
     width: 100%;
-    // outline: solid green 2px;
     position: relative;
-
-    .card {
-        // background-image: url("../cardback.jpeg");
-        // background-size: contain;
-        // background-repeat: no-repeat;
-        width: 100%;
-        width: 195px;
-        height: 260px;
-        position: relative;
-        top: 0;
-        left: 0;
-        margin: 0;
-        border-radius: 1rem;
-    }
 }
 
+// columns --> this is how the cards are stacking + setting fixed height on the cards so they dont squish down to the height of the row
 .cmc-one,
 .cmc-two,
 .cmc-three,
@@ -44,6 +26,7 @@
     grid-auto-rows: 3rem;
     justify-items: center;
 
+    // card component
     .card--wrap {
         grid-column: 1/-2;
         top: 0;

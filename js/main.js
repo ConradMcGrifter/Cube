@@ -223,8 +223,9 @@ function createElement(cardName) {
     card.classList.add("card");
     cardWrap.classList.add("displayNone");
     card.setAttribute("src", `${detailedCubeObj[cardName].image}`);
-    // card.setAttribute("src", "../cardback.jpeg");
+    // card.setAttribute("src", "../images/cardback.jpeg");
 
+    // set the url of the pseudo element content property to the image of the card --> gets displayed when a card is hovered
     cardWrap.style.setProperty("--image", `url(${detailedCubeObj[cardName].image})`);
     // card.style.backgroundImage = `url(${detailedCubeObj[cardName].image})`;
 
