@@ -41,6 +41,21 @@ button {
   background-color: white;
 }
 
+.radio-buttons--container .radio--wrap {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.radio-buttons--container .radio--wrap input[type="radio"] {
+  margin-left: 1rem;
+}
+
 .card--wrap {
   width: 100%;
   display: -webkit-box;

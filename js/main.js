@@ -275,8 +275,9 @@ for (let i = 0; i < allCards.length; i++) {
     createElement(sortedCube[i].name);
 }
 
-let cards = document.querySelectorAll(".card--wrap");
+let cards = document.querySelectorAll(".card--wrap"); // get all the card elements
 
+let currentColor = ""; // set global color variable
 // ---------- Filtering ----------
 
 const FILTER_RED = document.getElementById("filter-red");
@@ -285,7 +286,12 @@ const FILTER_BLACK = document.getElementById("filter-black");
 const FILTER_WHITE = document.getElementById("filter-white");
 const FILTER_GREEN = document.getElementById("filter-green");
 
-function filterAndDisplay(color) {
+const FILTER_CREATURE = document.getElementById("filter-creature");
+const FILTER_INSTANT = document.getElementById("filter-instant");
+const FILTER_SORCERY = document.getElementById("filter-sorcery");
+const SHOW_ALL = document.getElementById("filter-all");
+
+function filterAndDisplayColor(color) {
     let cardElementArr = [];
     cards.forEach((card) => {
         if (!card.classList.contains(color)) {
@@ -295,85 +301,94 @@ function filterAndDisplay(color) {
             cardElementArr.push(card);
         }
     });
+    currentColor = color;
+    console.log(currentColor);
+    // get all card elements by color within the column with class name "cmc-one"
+    let color_cmcOne = document.querySelector(".cmc-one").querySelectorAll("." + color);
+    let color_cmcTwo = document.querySelector(".cmc-two").querySelectorAll("." + color);
+    let color_cmcThree = document.querySelector(".cmc-three").querySelectorAll("." + color);
+    let color_cmcFour = document.querySelector(".cmc-four").querySelectorAll("." + color);
+    let color_cmcFive = document.querySelector(".cmc-five").querySelectorAll("." + color);
+    let color_cmcSix = document.querySelector(".cmc-six").querySelectorAll("." + color);
+}
 
-    // get all card elements within the column with class name "cmc-one"
-    let cmcOne = document.querySelector(".cmc-one").querySelectorAll("." + color);
-    let cmcTwo = document.querySelector(".cmc-two").querySelectorAll("." + color);
-    let cmcThree = document.querySelector(".cmc-three").querySelectorAll("." + color);
-    let cmcFour = document.querySelector(".cmc-four").querySelectorAll("." + color);
-    let cmcFive = document.querySelector(".cmc-five").querySelectorAll("." + color);
-    let cmcSix = document.querySelector(".cmc-six").querySelectorAll("." + color);
+function filterAndDisplayType(type) {
+    let currentCards = document.querySelectorAll(".card--wrap");
 
-    // cmcOne.forEach((card, index) => {
-    //     card.style.top = "-" + index * 235 + "px";
-    // });
+    let cardElementArr = [];
 
-    // cmcTwo.forEach((card, index) => {
-    //     card.style.top = "-" + index * 235 + "px";
-    // });
+    cards.forEach((card) => {
+        if (card.classList.contains("displayNone") && !card.classList.contains(currentColor)) {
+            return;
+        }
 
-    // cmcThree.forEach((card, index) => {
-    //     card.style.top = "-" + index * 235 + "px";
-    // });
-
-    // cmcFour.forEach((card, index) => {
-    //     card.style.top = "-" + index * 235 + "px";
-    // });
-
-    // cmcFive.forEach((card, index) => {
-    //     card.style.top = "-" + index * 235 + "px";
-    // });
-
-    // cmcSix.forEach((card, index) => {
-    //     card.style.top = "-" + index * 235 + "px";
-    // });
-    // ---------
-    // ---------
-    // ---------
-    cmcOne.forEach((card, index) => {
-        card.style.gridRow = index + 1 + "/" + (index + 2);
-    });
-
-    cmcTwo.forEach((card, index) => {
-        card.style.gridRow = index + 1 + "/" + (index + 2);
-    });
-
-    cmcThree.forEach((card, index) => {
-        card.style.gridRow = index + 1 + "/" + (index + 2);
-    });
-
-    cmcFour.forEach((card, index) => {
-        card.style.gridRow = index + 1 + "/" + (index + 2);
-    });
-
-    cmcFive.forEach((card, index) => {
-        card.style.gridRow = index + 1 + "/" + (index + 2);
-    });
-
-    cmcSix.forEach((card, index) => {
-        card.style.gridRow = index + 1 + "/" + (index + 2);
+        if (!card.classList.contains(type)) {
+            card.classList.add("displayNone");
+        } else {
+            card.classList.remove("displayNone");
+        }
     });
 }
 
+function checkTypeFilters(color) {
+    if (FILTER_CREATURE.checked) {
+        filterAndDisplayType("creature");
+    }
+    if (FILTER_INSTANT.checked) {
+        filterAndDisplayType("instant");
+    }
+    if (FILTER_SORCERY.checked) {
+        filterAndDisplayType("sorcery");
+    }
+    if (SHOW_ALL.checked) {
+        filterAndDisplayColor(color);
+    }
+}
+
 // display red cards by default when page loads...
-filterAndDisplay("red");
+filterAndDisplayColor("red");
+// check the "all" radio button by default
+SHOW_ALL.checked = true;
+
+FILTER_CREATURE.addEventListener("click", () => {
+    filterAndDisplayType("creature");
+});
+
+FILTER_INSTANT.addEventListener("click", () => {
+    filterAndDisplayType("instant");
+});
+
+FILTER_SORCERY.addEventListener("click", () => {
+    filterAndDisplayType("sorcery");
+});
+
+SHOW_ALL.addEventListener("click", () => {
+    filterAndDisplayColor(currentColor);
+});
+
+// color filters -----------
 
 FILTER_RED.addEventListener("click", () => {
-    filterAndDisplay("red");
+    filterAndDisplayColor("red");
+    checkTypeFilters("red");
 });
 
 FILTER_BLUE.addEventListener("click", () => {
-    filterAndDisplay("blue");
+    filterAndDisplayColor("blue");
+    checkTypeFilters("blue");
 });
 
 FILTER_BLACK.addEventListener("click", () => {
-    filterAndDisplay("black");
+    filterAndDisplayColor("black");
+    checkTypeFilters("black");
 });
 
 FILTER_WHITE.addEventListener("click", () => {
-    filterAndDisplay("white");
+    filterAndDisplayColor("white");
+    checkTypeFilters("white");
 });
 
 FILTER_GREEN.addEventListener("click", () => {
-    filterAndDisplay("green");
+    filterAndDisplayColor("green");
+    checkTypeFilters("green");
 });
