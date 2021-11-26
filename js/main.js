@@ -222,8 +222,8 @@ function createElement(cardName) {
     cardWrap.classList.add("card--wrap");
     card.classList.add("card");
     cardWrap.classList.add("displayNone");
-    card.setAttribute("src", `${detailedCubeObj[cardName].image}`);
-    // card.setAttribute("src", "../images/cardback.jpeg");
+    // card.setAttribute("src", `${detailedCubeObj[cardName].image}`);
+    card.setAttribute("src", "../images/cardback.jpeg");
 
     // set the url of the pseudo element content property to the image of the card --> gets displayed when a card is hovered
     cardWrap.style.setProperty("--image", `url(${detailedCubeObj[cardName].image})`);
@@ -384,6 +384,7 @@ SHOW_ALL.addEventListener("click", () => {
 });
 
 // color filters -----------
+let colorFilters = document.querySelectorAll(".color-filter");
 
 FILTER_RED.addEventListener("click", () => {
     filterAndDisplayColor("red");
