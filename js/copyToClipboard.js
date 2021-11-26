@@ -1,4 +1,4 @@
-import { cube, goldCards, dualLands, artifacts } from "./cube.js";
+import { cube, goldCards, dualLands, artifacts } from "./cube/cube.js";
 
 export function copyToClipboardAndShuffle() {
     const textArea = document.getElementById("cubeText");

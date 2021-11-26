@@ -229,4 +229,27 @@ button {
   position: sticky;
   top: 1rem;
 }
+
+.color-filter--wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.color-filter--wrap button {
+  margin: 0.25rem;
+}
+
+.color-filter--wrap button img {
+  border: solid rgba(0, 0, 0, 0) 2px;
+  border-radius: 999px;
+}
+
+.color-filter--wrap button img.-active {
+  border-radius: 999px;
+  border: solid white 2px;
+}
 /*# sourceMappingURL=main.css.map */

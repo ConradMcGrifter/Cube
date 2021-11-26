@@ -14,21 +14,23 @@
             <section class="side-bar">
                 <div class="side-bar-content--wrap">
                     <button id="copyClipboard">copy cube</button>
-                    <button id="filter-red">
-                        <img src="images/Red_Mana.png" alt="" class="red-mana" />
-                    </button>
-                    <button id="filter-blue" class="color-filter">
-                        <img src="images/Blue_Mana.png" alt="" class="blue-mana" />
-                    </button>
-                    <button id="filter-black" class="color-filter">
-                        <img src="images/Black_Mana.png" alt="" class="black-mana" />
-                    </button>
-                    <button id="filter-white" class="color-filter">
-                        <img src="images/White_Mana.png" alt="" class="white-mana" />
-                    </button>
-                    <button id="filter-green" class="color-filter">
-                        <img src="images/Green_Mana.png" alt="" class="green-mana" />
-                    </button>
+                    <div class="color-filter--wrap">
+                        <button id="filter-red">
+                            <img src="images/Red_Mana.png" alt="" class="red-mana -active" />
+                        </button>
+                        <button id="filter-blue" class="color-filter">
+                            <img src="images/Blue_Mana.png" alt="" class="blue-mana" />
+                        </button>
+                        <button id="filter-black" class="color-filter">
+                            <img src="images/Black_Mana.png" alt="" class="black-mana" />
+                        </button>
+                        <button id="filter-white" class="color-filter">
+                            <img src="images/White_Mana.png" alt="" class="white-mana" />
+                        </button>
+                        <button id="filter-green" class="color-filter">
+                            <img src="images/Green_Mana.png" alt="" class="green-mana" />
+                        </button>
+                    </div>
                     <!-- radio buttons -->
                     <div class="radio-buttons--container">
                         <div class="radio--wrap">
@@ -48,11 +50,11 @@
                             <input type="radio" id="filter-sorcery" name="type_filter"></input>
                         </div>
                         <div class="radio--wrap">
-                            <label for="filter-sorcery">Enchantment</label>
+                            <label for="filter-enchantment">Enchantment</label>
                             <input type="radio" id="filter-enchantment" name="type_filter"></input>
                         </div>
                         <div class="radio--wrap">
-                            <label for="filter-sorcery">Artifact</label>
+                            <label for="filter-artifact">Artifact</label>
                             <input type="radio" id="filter-artifact" name="type_filter"></input>
                         </div>
                     </div>

@@ -1,3 +1,11 @@
+import { zendikarRisingObj } from "../sets/zendikar.js";
+import { adventureForgottenRealmsObj } from "../sets/AFR.js";
+import { core2021Obj } from "../sets/core2021.js";
+import { ikoriaObj } from "../sets/ikoria.js";
+import { kaldheimObj } from "../sets/kaldheim.js";
+import { masters25Obj } from "../sets/masters25.js";
+import { warOfTheSparkObj } from "../sets/warOfTheSpark.js";
+
 export const cube = [
     "Fireblade Charger",
     "Frenzied Goblin",
@@ -370,3 +378,148 @@ export const artifacts = [
     "Sea Gate Colossus",
     "Skyclave Sentinel",
 ];
+
+// ---------
+// create card objects for the cards in the cube array
+export let detailedCube = cube
+    .map((card) => {
+        if (zendikarRisingObj[card]) {
+            return { ...zendikarRisingObj[card], ["name"]: card };
+        }
+
+        // add an if statement here to check kaldheim / AFR , etc... just like the above code
+        if (adventureForgottenRealmsObj[card]) {
+            return { ...adventureForgottenRealmsObj[card], ["name"]: card };
+        }
+
+        if (kaldheimObj[card]) {
+            return { ...kaldheimObj[card], ["name"]: card };
+        }
+
+        if (core2021Obj[card]) {
+            return { ...core2021Obj[card], ["name"]: card };
+        }
+
+        if (ikoriaObj[card]) {
+            return { ...ikoriaObj[card], ["name"]: card };
+        }
+
+        if (warOfTheSparkObj[card]) {
+            return { ...warOfTheSparkObj[card], ["name"]: card };
+        }
+
+        if (masters25Obj[card]) {
+            return { ...masters25Obj[card], ["name"]: card };
+        } else {
+            console.log(card);
+        }
+    })
+    .filter((card) => {
+        if (card !== undefined) {
+            return card;
+        }
+    });
+
+// create card objects of the gold cards array + fix color
+export let detailedGoldCards = goldCards
+    .map((card) => {
+        if (zendikarRisingObj[card]) {
+            zendikarRisingObj[card].color = "Gold";
+            return { ...zendikarRisingObj[card], ["name"]: card };
+        }
+
+        // add an if statement here to check kaldheim / AFR , etc... just like the above code
+        if (adventureForgottenRealmsObj[card]) {
+            adventureForgottenRealmsObj[card].color = "Gold";
+            return { ...adventureForgottenRealmsObj[card], ["name"]: card };
+        }
+
+        if (kaldheimObj[card]) {
+            kaldheimObj[card].color = "Gold";
+            return { ...kaldheimObj[card], ["name"]: card };
+        }
+
+        if (core2021Obj[card]) {
+            core2021Obj[card].color = "Gold";
+            return { ...core2021Obj[card], ["name"]: card };
+        }
+
+        if (ikoriaObj[card]) {
+            ikoriaObj[card].color = "Gold";
+            return { ...ikoriaObj[card], ["name"]: card };
+        }
+
+        if (warOfTheSparkObj[card]) {
+            warOfTheSparkObj[card].color = "Gold";
+            return { ...warOfTheSparkObj[card], ["name"]: card };
+        }
+
+        if (masters25Obj[card]) {
+            masters25Obj[card].color = "Gold";
+            return { ...masters25Obj[card], ["name"]: card };
+        } else {
+            console.log(card);
+        }
+    })
+    .filter((card) => {
+        if (card !== undefined) {
+            return card;
+        }
+    });
+
+// create card objects of colorless artifacts + fix undefined color
+export let detailedColorless = artifacts.map((card) => {
+    if (zendikarRisingObj[card]) {
+        zendikarRisingObj[card].color = "Colorless";
+        return { ...zendikarRisingObj[card], ["name"]: card };
+    }
+
+    // add an if statement here to check kaldheim / AFR , etc... just like the above code
+    if (adventureForgottenRealmsObj[card]) {
+        adventureForgottenRealmsObj[card].color = "Colorless";
+        return { ...adventureForgottenRealmsObj[card], ["name"]: card };
+    }
+
+    if (kaldheimObj[card]) {
+        kaldheimObj[card].color = "Colorless";
+        return { ...kaldheimObj[card], ["name"]: card };
+    }
+
+    if (core2021Obj[card]) {
+        core2021Obj[card].color = "Colorless";
+        return { ...core2021Obj[card], ["name"]: card };
+    }
+
+    if (ikoriaObj[card]) {
+        ikoriaObj[card].color = "Colorless";
+        return { ...ikoriaObj[card], ["name"]: card };
+    }
+
+    if (warOfTheSparkObj[card]) {
+        warOfTheSparkObj[card].color = "Colorless";
+        return { ...warOfTheSparkObj[card], ["name"]: card };
+    }
+
+    if (masters25Obj[card]) {
+        masters25Obj[card].color = "Colorless";
+        return { ...masters25Obj[card], ["name"]: card };
+    } else {
+        console.log(card);
+    }
+});
+
+// combine all the card objects into an array
+export const allCards = detailedCube.concat(detailedGoldCards, detailedColorless);
+
+// create an object from the allCards array with the card name as the
+export let detailedCubeObj = allCards.reduce((acc, card) => {
+    return {
+        ...acc,
+        [card.name]: {
+            ["image"]: card.image,
+            ["cmc"]: card.cmc,
+            ["color"]: card.color,
+            ["type"]: card.type,
+        },
+    };
+}, {});

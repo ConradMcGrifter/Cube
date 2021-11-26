@@ -1,185 +1,24 @@
-import { zendikarRisingObj, zendikarRising } from "./zendikar.js";
-import { adventureForgottenRealms, adventureForgottenRealmsObj } from "./AFR.js";
-import { kaldheim, kaldheimObj } from "./kaldheim.js";
-import { core2021, core2021Obj } from "./core2021.js";
-import { ikoria, ikoriaObj } from "./ikoria.js";
-import { warOfTheSpark, warOfTheSparkObj } from "./warOfTheSpark.js";
-import { masters25, masters25Obj } from "./masters25.js";
-import { cube, goldCards, dualLands, artifacts } from "./cube.js";
+import { zendikarRisingObj, zendikarRising } from "./sets/zendikar.js";
+import { adventureForgottenRealms, adventureForgottenRealmsObj } from "./sets/AFR.js";
+import { kaldheim, kaldheimObj } from "./sets/kaldheim.js";
+import { core2021, core2021Obj } from "./sets/core2021.js";
+import { ikoria, ikoriaObj } from "./sets/ikoria.js";
+import { warOfTheSpark, warOfTheSparkObj } from "./sets/warOfTheSpark.js";
+import { masters25, masters25Obj } from "./sets/masters25.js";
+import { cube, goldCards, dualLands, artifacts } from "./cube/cube.js";
 import { copyToClipboardAndShuffle } from "./copyToClipboard.js";
+import {
+    detailedCube,
+    detailedGoldCards,
+    detailedColorless,
+    allCards,
+    detailedCubeObj,
+} from "./cube/cube.js";
 
 // shuffle the cube and put the results in a text area so the user can copy the list to clipboard
 copyToClipboardAndShuffle();
 
 // let regex = /[1-9]|(undefined)/g;
-
-// create card objects for the cards in the cube array
-let detailedCube = cube
-    .map((card) => {
-        if (zendikarRisingObj[card]) {
-            // if (regex.test(zendikarRisingObj[card].color)) {
-            //     zendikarRisingObj[card].color = "Colorless";
-            //     console.log(zendikarRisingObj[card].color, " - ", zendikarRisingObj[card]);
-            // }
-            return { ...zendikarRisingObj[card], ["name"]: card };
-        }
-
-        // add an if statement here to check kaldheim / AFR , etc... just like the above code
-        if (adventureForgottenRealmsObj[card]) {
-            // if (regex.test(adventureForgottenRealmsObj[card].color)) {
-            //     adventureForgottenRealmsObj[card].color = "Colorless";
-            // }
-            return { ...adventureForgottenRealmsObj[card], ["name"]: card };
-        }
-
-        if (kaldheimObj[card]) {
-            // if (regex.test(kaldheimObj[card].color)) {
-            //     kaldheimObj[card].color = "Colorless";
-            // }
-            return { ...kaldheimObj[card], ["name"]: card };
-        }
-
-        if (core2021Obj[card]) {
-            // if (regex.test(core2021Obj[card].color)) {
-            //     core2021Obj[card].color = "Colorless";
-            //     // console.log(core2021Obj[card].color, " - ", core2021Obj[card]);
-            // }
-
-            return { ...core2021Obj[card], ["name"]: card };
-        }
-
-        if (ikoriaObj[card]) {
-            // if (regex.test(ikoriaObj[card].color)) {
-            //     ikoriaObj[card].color = "Colorless";
-            // }
-            return { ...ikoriaObj[card], ["name"]: card };
-        }
-
-        if (warOfTheSparkObj[card]) {
-            // if (regex.test(warOfTheSparkObj[card].color)) {
-            //     warOfTheSparkObj[card].color = "Colorless";
-            // }
-            return { ...warOfTheSparkObj[card], ["name"]: card };
-        }
-
-        if (masters25Obj[card]) {
-            // if (regex.test(masters25Obj[card].color)) {
-            //     masters25Obj[card].color = "Colorless";
-            // }
-            return { ...masters25Obj[card], ["name"]: card };
-        } else {
-            console.log(card);
-        }
-    })
-    .filter((card) => {
-        if (card !== undefined) {
-            return card;
-        }
-    });
-
-// create card objects of the gold cards array + fix color
-let detailedGoldCards = goldCards
-    .map((card) => {
-        if (zendikarRisingObj[card]) {
-            zendikarRisingObj[card].color = "Gold";
-            return { ...zendikarRisingObj[card], ["name"]: card };
-        }
-
-        // add an if statement here to check kaldheim / AFR , etc... just like the above code
-        if (adventureForgottenRealmsObj[card]) {
-            adventureForgottenRealmsObj[card].color = "Gold";
-            return { ...adventureForgottenRealmsObj[card], ["name"]: card };
-        }
-
-        if (kaldheimObj[card]) {
-            kaldheimObj[card].color = "Gold";
-            return { ...kaldheimObj[card], ["name"]: card };
-        }
-
-        if (core2021Obj[card]) {
-            core2021Obj[card].color = "Gold";
-            return { ...core2021Obj[card], ["name"]: card };
-        }
-
-        if (ikoriaObj[card]) {
-            ikoriaObj[card].color = "Gold";
-            return { ...ikoriaObj[card], ["name"]: card };
-        }
-
-        if (warOfTheSparkObj[card]) {
-            warOfTheSparkObj[card].color = "Gold";
-            return { ...warOfTheSparkObj[card], ["name"]: card };
-        }
-
-        if (masters25Obj[card]) {
-            masters25Obj[card].color = "Gold";
-            return { ...masters25Obj[card], ["name"]: card };
-        } else {
-            console.log(card);
-        }
-    })
-    .filter((card) => {
-        if (card !== undefined) {
-            return card;
-        }
-    });
-
-// create card objects of colorless artifacts + fix undefined color
-let detailedColorless = artifacts.map((card) => {
-    if (zendikarRisingObj[card]) {
-        zendikarRisingObj[card].color = "Colorless";
-        return { ...zendikarRisingObj[card], ["name"]: card };
-    }
-
-    // add an if statement here to check kaldheim / AFR , etc... just like the above code
-    if (adventureForgottenRealmsObj[card]) {
-        adventureForgottenRealmsObj[card].color = "Colorless";
-        return { ...adventureForgottenRealmsObj[card], ["name"]: card };
-    }
-
-    if (kaldheimObj[card]) {
-        kaldheimObj[card].color = "Colorless";
-        return { ...kaldheimObj[card], ["name"]: card };
-    }
-
-    if (core2021Obj[card]) {
-        core2021Obj[card].color = "Colorless";
-        return { ...core2021Obj[card], ["name"]: card };
-    }
-
-    if (ikoriaObj[card]) {
-        ikoriaObj[card].color = "Colorless";
-        return { ...ikoriaObj[card], ["name"]: card };
-    }
-
-    if (warOfTheSparkObj[card]) {
-        warOfTheSparkObj[card].color = "Colorless";
-        return { ...warOfTheSparkObj[card], ["name"]: card };
-    }
-
-    if (masters25Obj[card]) {
-        masters25Obj[card].color = "Colorless";
-        return { ...masters25Obj[card], ["name"]: card };
-    } else {
-        console.log(card);
-    }
-});
-
-// combine all the card objects into an array
-const allCards = detailedCube.concat(detailedGoldCards, detailedColorless);
-
-// create an object from the allCards array with the card name as the
-let detailedCubeObj = allCards.reduce((acc, card) => {
-    return {
-        ...acc,
-        [card.name]: {
-            ["image"]: card.image,
-            ["cmc"]: card.cmc,
-            ["color"]: card.color,
-            ["type"]: card.type,
-        },
-    };
-}, {});
 
 function compareType(a, b) {
     if (a.type < b.type) {
@@ -216,6 +55,7 @@ const sortedCube_Color = sortedCube.sort(compareColor);
 
 // --- testing card creation---
 
+// this function creates a div wrapper + img element --> it then appends the element to one of the columns based on the cards' CMC value
 function createElement(cardName) {
     const card = document.createElement("img");
     const cardWrap = document.createElement("div");
@@ -270,7 +110,7 @@ function createElement(cardName) {
         cardWrap.append(card);
     }
 }
-
+// for every card in the cube --> create a card element
 for (let i = 0; i < allCards.length; i++) {
     createElement(sortedCube[i].name);
 }
@@ -344,7 +184,6 @@ function checkTypeFilters(color) {
     }
     if (FILTER_ENCHANTMENT.checked) {
         filterAndDisplayType("enchantment");
-        console.log("test");
     }
     if (FILTER_ARTIFACT.checked) {
         filterAndDisplayType("artifact");
@@ -409,4 +248,15 @@ FILTER_WHITE.addEventListener("click", () => {
 FILTER_GREEN.addEventListener("click", () => {
     filterAndDisplayColor("green");
     checkTypeFilters("green");
+});
+
+const filter_icons = document.querySelector(".color-filter--wrap").querySelectorAll("img");
+
+filter_icons.forEach((icon) => {
+    icon.addEventListener("click", () => {
+        for (let i = 0; i < filter_icons.length; i++) {
+            filter_icons[i].classList.remove("-active");
+        }
+        icon.classList.add("-active");
+    });
 });
