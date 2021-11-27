@@ -125,6 +125,8 @@ const FILTER_BLUE = document.getElementById("filter-blue");
 const FILTER_BLACK = document.getElementById("filter-black");
 const FILTER_WHITE = document.getElementById("filter-white");
 const FILTER_GREEN = document.getElementById("filter-green");
+const FILTER_GOLD = document.getElementById("filter-gold");
+const FILTER_COLORLESS = document.getElementById("filter-colorless");
 
 const FILTER_CREATURE = document.getElementById("filter-creature");
 const FILTER_INSTANT = document.getElementById("filter-instant");
@@ -248,6 +250,16 @@ FILTER_WHITE.addEventListener("click", () => {
 FILTER_GREEN.addEventListener("click", () => {
     filterAndDisplayColor("green");
     checkTypeFilters("green");
+});
+
+FILTER_GOLD.addEventListener("click", () => {
+    filterAndDisplayColor("gold");
+    checkTypeFilters("gold");
+});
+
+FILTER_COLORLESS.addEventListener("click", () => {
+    filterAndDisplayColor("colorless");
+    checkTypeFilters("colorless");
 });
 
 const filter_icons = document.querySelector(".color-filter--wrap").querySelectorAll("img");

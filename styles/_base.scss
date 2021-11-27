@@ -39,16 +39,3 @@ button {
     padding: 1rem 2rem;
     background-color: white;
 }
-
-.radio-buttons--container {
-    .radio--wrap {
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        margin-top: 1rem;
-
-        input[type="radio"] {
-            margin-left: 1rem;
-        }
-    }
-}

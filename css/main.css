@@ -41,21 +41,6 @@ button {
   background-color: white;
 }
 
-.radio-buttons--container .radio--wrap {
-  color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-top: 1rem;
-}
-
-.radio-buttons--container .radio--wrap input[type="radio"] {
-  margin-left: 1rem;
-}
-
 .card--wrap {
   width: 100%;
   display: -webkit-box;
@@ -67,6 +52,7 @@ button {
   width: 100%;
   height: 100%;
   cursor: pointer;
+  padding-bottom: 30rem;
 }
 
 .card--wrap > .card:hover {
@@ -158,6 +144,16 @@ button {
   gap: 1rem;
 }
 
+@media only screen and (max-width: 1200px) {
+  .cards--container {
+        grid-template-areas: "1 2 3" ". . ." "4 5 6";
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+    -ms-grid-rows: auto 25rem auto;
+        grid-template-rows: auto 25rem auto;
+  }
+}
+
 .column {
   height: 100%;
   width: 100%;
@@ -210,6 +206,47 @@ button {
   pointer-events: none;
 }
 
+@media only screen and (max-width: 1200px) {
+  .cmc-four {
+    -ms-grid-row: 1;
+    -ms-grid-column: 4;
+    grid-area: 4;
+  }
+  .cmc-five {
+    -ms-grid-row: 4;
+    -ms-grid-row-span: 1;
+    grid-row: 4 / 5;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2 / 3;
+  }
+  .cmc-six {
+    -ms-grid-row: 4;
+    -ms-grid-row-span: 1;
+    grid-row: 4 / 5;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 1;
+    grid-column: 3 / 4;
+  }
+  .cmc-three .card--wrap:hover::before {
+    border: solid gold 3px;
+    border-radius: 1.55rem;
+    content: var(--image, "hello");
+    display: block;
+    position: absolute;
+    z-index: 999;
+    left: 0;
+    right: unset;
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+    -webkit-box-shadow: 2px 5px 25px black;
+            box-shadow: 2px 5px 25px black;
+    color: white;
+    line-height: 0;
+    pointer-events: none;
+  }
+}
+
 .side-bar-content--wrap {
   margin-top: 1rem;
   display: -webkit-box;
@@ -237,10 +274,17 @@ button {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin: 2rem 0;
+  padding: 1rem;
+  max-width: 15rem;
 }
 
 .color-filter--wrap button {
   margin: 0.25rem;
+  color: lightblue;
+}
+
+.color-filter--wrap button:focus {
+  color: lightgreen;
 }
 
 .color-filter--wrap button img {
@@ -251,5 +295,24 @@ button {
 .color-filter--wrap button img.-active {
   border-radius: 999px;
   border: solid white 2px;
+}
+
+.radio-buttons--container {
+  padding: 1rem;
+}
+
+.radio-buttons--container .radio--wrap {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.radio-buttons--container .radio--wrap input[type="radio"] {
+  margin-left: 1rem;
 }
 /*# sourceMappingURL=main.css.map */
