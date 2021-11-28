@@ -145,6 +145,13 @@ button {
   gap: 1rem;
 }
 
+@media only screen and (max-width: 1440px) {
+  .cards--container {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media only screen and (max-width: 1400px) {
   .cards--container {
         grid-template-areas: "1 2 3" "4 5 6";
@@ -158,6 +165,14 @@ button {
 .cards--container header {
   color: white;
   font-weight: 700;
+  width: 100%;
+  text-align: center;
+  background: #252525;
+  margin-bottom: 0.5rem;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  border-radius: 0.5rem 0.5rem 0 0;
 }
 
 .column {
@@ -183,6 +198,17 @@ button {
   justify-items: center;
 }
 
+@media only screen and (max-width: 1440px) {
+  .cmc-one,
+  .cmc-two,
+  .cmc-three,
+  .cmc-four,
+  .cmc-five,
+  .cmc-six {
+    grid-auto-rows: 2.5rem;
+  }
+}
+
 .cmc-one .card--wrap,
 .cmc-two .card--wrap,
 .cmc-three .card--wrap,
@@ -194,6 +220,18 @@ button {
   left: 0;
   width: 100%;
   margin: 0;
+}
+
+@media only screen and (max-width: 1440px) {
+  .cmc-one .card--wrap .card,
+  .cmc-two .card--wrap .card,
+  .cmc-three .card--wrap .card,
+  .cmc-four .card--wrap .card,
+  .cmc-five .card--wrap .card,
+  .cmc-six .card--wrap .card {
+    width: 165px;
+    height: 230px;
+  }
 }
 
 .cmc-five .card--wrap:hover::before,
