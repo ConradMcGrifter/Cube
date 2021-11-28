@@ -4,12 +4,8 @@
     display: grid;
     grid-template-areas: "1 2 3 4 5 6";
     grid-template-rows: auto;
-    grid-template-columns: repeat(6, minmax(21rem, 1fr));
+    grid-template-columns: repeat(6, minmax(18rem, 1fr));
     gap: 1rem;
-
-    @media only screen and (max-width: 1440px) {
-        grid-template-columns: repeat(3, 1fr);
-    }
 
     @media only screen and (max-width: 1400px) {
         grid-template-areas:
@@ -53,12 +49,12 @@
     grid-auto-rows: 3rem; // this -s what makes the cards stack
     justify-items: center;
 
-    @media only screen and (max-width: 1440px) {
+    @media only screen and (max-width: 1400px) {
         grid-auto-rows: 2.5rem;
     }
 
     // card component
-    .card--wrap {
+    > .card--wrap {
         position: relative;
         grid-column: 1/-2;
         top: 0;
@@ -66,8 +62,31 @@
         // width: 100%;
         margin: 0;
 
+        & > .card:hover {
+            border: solid gold 2px;
+        }
+
+        &.displayNone {
+            display: none;
+        }
+
+        &:hover::before {
+            border: solid gold 3px;
+            border-radius: 1.55rem;
+            content: var(--image, url("../images/cardback.jpeg"));
+            background-color: black;
+            position: absolute;
+            z-index: 999;
+            right: -0.5rem;
+            transform: translateX(100%);
+            box-shadow: 2px 5px 25px black;
+            color: white;
+            line-height: 0;
+            pointer-events: none;
+        }
+
         .card {
-            @media only screen and (max-width: 1440px) {
+            @media only screen and (max-width: 1400px) {
                 width: 165px;
                 height: 230px;
             }
@@ -80,38 +99,27 @@
 .cmc-six {
     .card--wrap {
         &:hover::before {
-            border: solid gold 3px;
-            border-radius: 1.55rem;
-            content: var(--image, "hello");
-            display: block;
-            position: absolute;
-            z-index: 999;
             left: -0.5rem;
             right: unset;
             transform: translateX(-100%);
-            box-shadow: 2px 5px 25px black;
-            color: white;
-            line-height: 0;
-            pointer-events: none;
-            // border-radius: 1rem;
         }
     }
 }
 
-@media only screen and (max-width: 1200px) {
-    .cmc-four {
-        grid-area: 4;
-    }
+@media only screen and (max-width: 1400px) {
+    // .cmc-four {
+    //     grid-area: 4;
+    // }
 
-    .cmc-five {
-        grid-row: 4 / 5;
-        grid-column: 2 / 3;
-    }
+    // .cmc-five {
+    //     grid-row: 4 / 5;
+    //     grid-column: 2 / 3;
+    // }
 
-    .cmc-six {
-        grid-row: 4 / 5;
-        grid-column: 3 / 4;
-    }
+    // .cmc-six {
+    //     grid-row: 4 / 5;
+    //     grid-column: 3 / 4;
+    // }
 
     .cmc-three,
     .cmc-two {

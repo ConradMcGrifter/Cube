@@ -5,36 +5,14 @@
     // width: 100%;
     height: 100%;
     cursor: pointer;
-
-    & > .card:hover {
-        border: solid gold 2px;
-    }
-
-    &.displayNone {
-        display: none;
-    }
-
-    &:hover::before {
-        border: solid gold 3px;
-        border-radius: 1.55rem;
-        content: var(--image, url("../images/cardback.jpeg"));
-        background-color: black;
-        position: absolute;
-        z-index: 999;
-        right: -0.5rem;
-        transform: translateX(100%);
-        box-shadow: 2px 5px 25px black;
-        color: white;
-        line-height: 0;
-        pointer-events: none;
-    }
 }
 
 // this is the img element
 .card {
     width: 100%;
-    width: 185px;
-    height: 260px;
+    max-width: 185px;
+    height: 250px;
+    min-width: 160px;
     margin: 0;
     border-radius: 1rem;
 }
