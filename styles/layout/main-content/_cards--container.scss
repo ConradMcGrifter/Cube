@@ -46,7 +46,7 @@
 .cmc-six {
     display: grid;
     grid-template-columns: 1fr;
-    grid-auto-rows: 3rem; // this -s what makes the cards stack
+    grid-auto-rows: 2.8rem; // this -s what makes the cards stack
     justify-items: center;
 
     @media only screen and (max-width: 1400px) {
