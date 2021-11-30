@@ -1,11 +1,3 @@
-import { zendikarRisingObj, zendikarRising } from "./sets/zendikar.js";
-import { adventureForgottenRealms, adventureForgottenRealmsObj } from "./sets/AFR.js";
-import { kaldheim, kaldheimObj } from "./sets/kaldheim.js";
-import { core2021, core2021Obj } from "./sets/core2021.js";
-import { ikoria, ikoriaObj } from "./sets/ikoria.js";
-import { warOfTheSpark, warOfTheSparkObj } from "./sets/warOfTheSpark.js";
-import { masters25, masters25Obj } from "./sets/masters25.js";
-import { cube, goldCards, dualLands, artifacts } from "./cube/cube.js";
 import { copyToClipboardAndShuffle } from "./copyToClipboard.js";
 import {
     detailedCube,
@@ -14,6 +6,21 @@ import {
     allCards,
     detailedCubeObj,
 } from "./cube/cube.js";
+import {
+    FILTER_RED,
+    FILTER_BLUE,
+    FILTER_BLACK,
+    FILTER_WHITE,
+    FILTER_GREEN,
+    FILTER_GOLD,
+    FILTER_COLORLESS,
+    FILTER_CREATURE,
+    FILTER_INSTANT,
+    FILTER_SORCERY,
+    FILTER_ENCHANTMENT,
+    FILTER_ARTIFACT,
+    SHOW_ALL,
+} from "./event listeners/sidebar_EventListeners.js";
 
 // shuffle the cube and put the results in a text area so the user can copy the list to clipboard
 copyToClipboardAndShuffle();
@@ -62,8 +69,8 @@ function createElement(cardName) {
     cardWrap.classList.add("card--wrap");
     card.classList.add("card");
     cardWrap.classList.add("displayNone");
-    card.setAttribute("src", `${detailedCubeObj[cardName].image}`);
-    // card.setAttribute("src", "../images/cardback.jpeg");
+    // card.setAttribute("src", `${detailedCubeObj[cardName].image}`);
+    card.setAttribute("src", "../images/cardback.jpeg");
 
     // set the url of the pseudo element content property to the image of the card --> gets displayed when a card is hovered
     cardWrap.style.setProperty("--image", `url(${detailedCubeObj[cardName].image})`);
@@ -117,25 +124,10 @@ for (let i = 0; i < allCards.length; i++) {
 
 let cards = document.querySelectorAll(".card--wrap"); // get all the card elements
 
-let currentColor = ""; // set global color variable
-// ---------- Filtering ----------
+export let currentColor = ""; // set global color variable
 
-const FILTER_RED = document.getElementById("filter-red");
-const FILTER_BLUE = document.getElementById("filter-blue");
-const FILTER_BLACK = document.getElementById("filter-black");
-const FILTER_WHITE = document.getElementById("filter-white");
-const FILTER_GREEN = document.getElementById("filter-green");
-const FILTER_GOLD = document.getElementById("filter-gold");
-const FILTER_COLORLESS = document.getElementById("filter-colorless");
-
-const FILTER_CREATURE = document.getElementById("filter-creature");
-const FILTER_INSTANT = document.getElementById("filter-instant");
-const FILTER_SORCERY = document.getElementById("filter-sorcery");
-const FILTER_ENCHANTMENT = document.getElementById("filter-enchantment");
-const FILTER_ARTIFACT = document.getElementById("filter-artifact");
-const SHOW_ALL = document.getElementById("filter-all");
-
-function filterAndDisplayColor(color) {
+// -----functions used for the filter event listeners----------
+export function filterAndDisplayColor(color) {
     let cardElementArr = [];
     cards.forEach((card) => {
         if (!card.classList.contains(color)) {
@@ -156,7 +148,7 @@ function filterAndDisplayColor(color) {
     let color_cmcSix = document.querySelector(".cmc-six").querySelectorAll("." + color);
 }
 
-function filterAndDisplayType(type) {
+export function filterAndDisplayType(type) {
     let currentCards = document.querySelectorAll(".card--wrap");
 
     let cardElementArr = [];
@@ -174,7 +166,7 @@ function filterAndDisplayType(type) {
     });
 }
 
-function checkTypeFilters(color) {
+export function checkTypeFilters(color) {
     if (FILTER_CREATURE.checked) {
         filterAndDisplayType("creature");
     }
@@ -194,81 +186,9 @@ function checkTypeFilters(color) {
         filterAndDisplayColor(color);
     }
 }
+// ------------------------------------------------------
 
 // display red cards by default when page loads...
 filterAndDisplayColor("red");
 // check the "all" radio button by default
 SHOW_ALL.checked = true;
-
-FILTER_CREATURE.addEventListener("click", () => {
-    filterAndDisplayType("creature");
-});
-
-FILTER_INSTANT.addEventListener("click", () => {
-    filterAndDisplayType("instant");
-});
-
-FILTER_SORCERY.addEventListener("click", () => {
-    filterAndDisplayType("sorcery");
-});
-
-FILTER_ENCHANTMENT.addEventListener("click", () => {
-    filterAndDisplayType("enchantment");
-});
-
-FILTER_ARTIFACT.addEventListener("click", () => {
-    filterAndDisplayType("artifact");
-});
-
-SHOW_ALL.addEventListener("click", () => {
-    filterAndDisplayColor(currentColor);
-});
-
-// color filters -----------
-let colorFilters = document.querySelectorAll(".color-filter");
-
-FILTER_RED.addEventListener("click", () => {
-    filterAndDisplayColor("red");
-    checkTypeFilters("red");
-});
-
-FILTER_BLUE.addEventListener("click", () => {
-    filterAndDisplayColor("blue");
-    checkTypeFilters("blue");
-});
-
-FILTER_BLACK.addEventListener("click", () => {
-    filterAndDisplayColor("black");
-    checkTypeFilters("black");
-});
-
-FILTER_WHITE.addEventListener("click", () => {
-    filterAndDisplayColor("white");
-    checkTypeFilters("white");
-});
-
-FILTER_GREEN.addEventListener("click", () => {
-    filterAndDisplayColor("green");
-    checkTypeFilters("green");
-});
-
-FILTER_GOLD.addEventListener("click", () => {
-    filterAndDisplayColor("gold");
-    checkTypeFilters("gold");
-});
-
-FILTER_COLORLESS.addEventListener("click", () => {
-    filterAndDisplayColor("colorless");
-    checkTypeFilters("colorless");
-});
-
-const filter_icons = document.querySelector(".color-filter--wrap").querySelectorAll("img");
-
-filter_icons.forEach((icon) => {
-    icon.addEventListener("click", () => {
-        for (let i = 0; i < filter_icons.length; i++) {
-            filter_icons[i].classList.remove("-active");
-        }
-        icon.classList.add("-active");
-    });
-});

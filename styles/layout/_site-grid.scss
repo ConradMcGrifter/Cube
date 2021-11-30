@@ -17,9 +17,9 @@
 
 .main-content {
     min-height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     padding: 2rem 2rem 15rem 2rem;
-    // background: lightblue;
     grid-area: m;
 }

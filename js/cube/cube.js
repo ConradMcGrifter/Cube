@@ -6,6 +6,13 @@ import { kaldheimObj } from "../sets/kaldheim.js";
 import { masters25Obj } from "../sets/masters25.js";
 import { warOfTheSparkObj } from "../sets/warOfTheSpark.js";
 
+// import all the set objects --> each set object has a card's name as its key
+// detailedCube --> create a new array of card objects containing only cards in the cube
+// detailedGoldCards --> creatue a new array of objects containing only gold cards in the cube
+// detailedColorless --> creatue a new array of objects containing only colorless cards in the cube
+// allCards --> combine all the detailed card arrays
+// detailedCubeObj --> reduce the allCards array into an object that has each card as an object with the card name as the key
+
 export const cube = [
     "Fireblade Charger",
     "Frenzied Goblin",
@@ -511,7 +518,7 @@ export let detailedColorless = artifacts.map((card) => {
 // combine all the card objects into an array
 export const allCards = detailedCube.concat(detailedGoldCards, detailedColorless);
 
-// create an object from the allCards array with the card name as the
+// create an object from the allCards array with the card name as the key
 export let detailedCubeObj = allCards.reduce((acc, card) => {
     return {
         ...acc,

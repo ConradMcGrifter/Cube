@@ -54,13 +54,13 @@ button {
   cursor: pointer;
 }
 
-.card {
+.card--wrap .card {
   width: 100%;
-  max-width: 185px;
   height: 250px;
   min-width: 160px;
   margin: 0;
   border-radius: 1rem;
+  border: solid #0c0c0c;
 }
 
 .site-grid {
@@ -93,6 +93,7 @@ button {
 
 .main-content {
   min-height: 100%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -180,20 +181,18 @@ button {
 
 .cards--container {
   width: 100%;
-  max-width: 1250px;
+  max-width: 1350px;
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "1 2 3 4 5 6";
   -ms-grid-rows: auto;
       grid-template-rows: auto;
-  -ms-grid-columns: (minmax(18rem, 1fr))[6];
-      grid-template-columns: repeat(6, minmax(18rem, 1fr));
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
   gap: 1rem;
 }
 
 @media only screen and (max-width: 1400px) {
   .cards--container {
-        grid-template-areas: "1 2 3" "4 5 6";
     -ms-grid-columns: (1fr)[3];
         grid-template-columns: repeat(3, 1fr);
     -ms-grid-rows: auto auto;
@@ -221,14 +220,6 @@ button {
   position: relative;
   padding: 1rem 1rem 25rem 1rem;
   background: #1b1b1b;
-}
-
-.cmc-one,
-.cmc-two,
-.cmc-three,
-.cmc-four,
-.cmc-five,
-.cmc-six {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr;
@@ -238,22 +229,12 @@ button {
 }
 
 @media only screen and (max-width: 1400px) {
-  .cmc-one,
-  .cmc-two,
-  .cmc-three,
-  .cmc-four,
-  .cmc-five,
-  .cmc-six {
+  .column {
     grid-auto-rows: 2.5rem;
   }
 }
 
-.cmc-one > .card--wrap,
-.cmc-two > .card--wrap,
-.cmc-three > .card--wrap,
-.cmc-four > .card--wrap,
-.cmc-five > .card--wrap,
-.cmc-six > .card--wrap {
+.column > .card--wrap {
   position: relative;
   grid-column: 1/-2;
   top: 0;
@@ -261,30 +242,15 @@ button {
   margin: 0;
 }
 
-.cmc-one > .card--wrap > .card:hover,
-.cmc-two > .card--wrap > .card:hover,
-.cmc-three > .card--wrap > .card:hover,
-.cmc-four > .card--wrap > .card:hover,
-.cmc-five > .card--wrap > .card:hover,
-.cmc-six > .card--wrap > .card:hover {
+.column > .card--wrap > .card:hover {
   border: solid gold 2px;
 }
 
-.cmc-one > .card--wrap.displayNone,
-.cmc-two > .card--wrap.displayNone,
-.cmc-three > .card--wrap.displayNone,
-.cmc-four > .card--wrap.displayNone,
-.cmc-five > .card--wrap.displayNone,
-.cmc-six > .card--wrap.displayNone {
+.column > .card--wrap.displayNone {
   display: none;
 }
 
-.cmc-one > .card--wrap:hover::before,
-.cmc-two > .card--wrap:hover::before,
-.cmc-three > .card--wrap:hover::before,
-.cmc-four > .card--wrap:hover::before,
-.cmc-five > .card--wrap:hover::before,
-.cmc-six > .card--wrap:hover::before {
+.column > .card--wrap:hover::before {
   border: solid gold 3px;
   border-radius: 1.55rem;
   content: var(--image, url("../images/cardback.jpeg"));
@@ -302,12 +268,7 @@ button {
 }
 
 @media only screen and (max-width: 1400px) {
-  .cmc-one > .card--wrap .card,
-  .cmc-two > .card--wrap .card,
-  .cmc-three > .card--wrap .card,
-  .cmc-four > .card--wrap .card,
-  .cmc-five > .card--wrap .card,
-  .cmc-six > .card--wrap .card {
+  .column > .card--wrap .card {
     width: 165px;
     height: 230px;
   }
@@ -324,21 +285,10 @@ button {
 @media only screen and (max-width: 1400px) {
   .cmc-three .card--wrap:hover::before,
   .cmc-two .card--wrap:hover::before {
-    border: solid gold 3px;
-    border-radius: 1.55rem;
-    content: var(--image, "hello");
-    display: block;
-    position: absolute;
-    z-index: 999;
     left: -0.5rem;
     right: unset;
     -webkit-transform: translateX(-100%);
             transform: translateX(-100%);
-    -webkit-box-shadow: 2px 5px 25px black;
-            box-shadow: 2px 5px 25px black;
-    color: white;
-    line-height: 0;
-    pointer-events: none;
   }
 }
 /*# sourceMappingURL=main.css.map */

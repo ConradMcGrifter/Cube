@@ -1,6 +1,10 @@
-finish scraping other sets and building arrays
+1. finish scraping other sets and building arrays
+2. make multiple media queries to adjust the card container grid when sizing down ( go from 6 columns to 4 to 2)
+    - adjust the grid layout to have the sidebar go to the top as smaller screen size and make a hamburger menu?
+3. create a "list view" option to display the cards only by name (no image) --> still place them into correct cmc column --> still hover the name and see card
+4. create a search bar to look up cards by name? (is this useful?)
 
-have radio buttons set up for "creature" "instant" "sorcery" "artifact" "enchantment" ---> when a color is chose --> check to see if a radio button is selected --> if the button for "creature" is selected then only remove the "displayNone" class from creatures of the filtered color
+---
 
 how to style pseudo elements https://css-irl.info/quick-tip-style-pseudo-elements-with-javascript-using-custom-properties/
 How to move all HTML element children to another parent using JavaScript? https://stackoverflow.com/questions/20910147/how-to-move-all-html-element-children-to-another-parent-using-javascript
