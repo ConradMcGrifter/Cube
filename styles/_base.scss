@@ -29,6 +29,53 @@ button {
     margin-top: 1rem;
 }
 
+li {
+    list-style: none;
+    cursor: pointer;
+    font-size: clamp(1.2rem, 1vw, 1.6rem);
+    color: rgb(70, 142, 170);
+    // position:relative;
+
+    &.blue {
+        color: rgb(70, 142, 170);
+    }
+    &.red {
+        color: rgb(170, 70, 70);
+    }
+    &.white {
+        color: rgb(196, 188, 178);
+    }
+    &.green {
+        color: rgb(70, 170, 100);
+    }
+    &.black {
+        color: rgb(144, 90, 194);
+    }
+
+    &.displayNone {
+        display: none;
+    }
+
+    &:hover {
+        color: yellow;
+    }
+
+    &:hover::before {
+        border: solid gold 3px;
+        border-radius: 1.55rem;
+        content: var(--image, url("../images/cardback.jpeg"));
+        background-color: black;
+        position: absolute;
+        z-index: 999;
+        right: -0.5rem;
+        transform: translateX(100%);
+        box-shadow: 2px 5px 25px black;
+        color: white;
+        line-height: 0;
+        pointer-events: none;
+    }
+}
+
 // "copy to clipboard" text area and button
 #cubeText {
     position: absolute;
@@ -39,4 +86,9 @@ button {
 #copyClipboard {
     padding: 1rem 2rem;
     background-color: white;
+}
+
+#displayStyleList,
+#displayStyleCard {
+    color: gold;
 }

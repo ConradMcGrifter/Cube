@@ -55,7 +55,7 @@ function compareCMC(a, b) {
     return 0;
 }
 
-const sortedCube = [...allCards];
+export const sortedCube = [...allCards];
 const sortedCube_CMC = sortedCube.sort(compareCMC);
 const sortedCube_Type = sortedCube.sort(compareType);
 const sortedCube_Color = sortedCube.sort(compareColor);
@@ -63,9 +63,11 @@ const sortedCube_Color = sortedCube.sort(compareColor);
 // --- testing card creation---
 
 // this function creates a div wrapper + img element --> it then appends the element to one of the columns based on the cards' CMC value
-function createElement(cardName) {
+export function createElement(cardName) {
     const card = document.createElement("img");
     const cardWrap = document.createElement("div");
+    const listItem = document.createElement("li");
+    const list = document.createElement("ul");
     cardWrap.classList.add("card--wrap");
     card.classList.add("card");
     cardWrap.classList.add("displayNone");
@@ -116,20 +118,92 @@ function createElement(cardName) {
         document.querySelector(".cmc-six").append(cardWrap);
         cardWrap.append(card);
     }
+
+    // cardWrap.addEventListener("click", () => {
+    //     console.log(cardName);
+    //     cardWrap.parentElement.removeChild(cardWrap);
+    // });
 }
+
+export function createListItem(cardName) {
+    const listItem = document.createElement("li");
+    listItem.classList.add("card-list-item");
+    listItem.classList.add("displayNone");
+    listItem.innerText = cardName;
+
+    // add class name based on cards type
+    listItem.classList.add(detailedCubeObj[cardName].type.toLowerCase());
+
+    // add class names based on the card's property value -- this is for filtering
+    if (detailedCubeObj[cardName].color == undefined) {
+        listItem.classList.add("z");
+    } else {
+        listItem.classList.add(detailedCubeObj[cardName].color.toLowerCase());
+    }
+
+    // set the :hover::before img url
+    listItem.style.setProperty("--image", `url(${detailedCubeObj[cardName].image})`);
+
+    // get the color of the card and assign that as a class
+    if (detailedCubeObj[cardName].color == undefined) {
+        listItem.classList.add("z");
+    } else {
+        listItem.classList.add(detailedCubeObj[cardName].color.toLowerCase());
+    }
+
+    // check the cmc of the card and append it to the correct column in the HTML
+    if (detailedCubeObj[cardName].cmc == "1") {
+        document.querySelector(".cmc-one").append(listItem);
+    }
+    if (detailedCubeObj[cardName].cmc == "2") {
+        document.querySelector(".cmc-two").append(listItem);
+    }
+    if (detailedCubeObj[cardName].cmc == "3") {
+        document.querySelector(".cmc-three").append(listItem);
+    }
+    if (detailedCubeObj[cardName].cmc == "4") {
+        document.querySelector(".cmc-four").append(listItem);
+    }
+    if (detailedCubeObj[cardName].cmc == "5") {
+        document.querySelector(".cmc-five").append(listItem);
+    }
+    if (detailedCubeObj[cardName].cmc == "6") {
+        document.querySelector(".cmc-six").append(listItem);
+    }
+}
+
 // for every card in the cube --> create a card element
 for (let i = 0; i < allCards.length; i++) {
     createElement(sortedCube[i].name);
 }
+// for (let i = 0; i < allCards.length; i++) {
+//     createListItem(sortedCube[i].name);
+// }
 
-let cards = document.querySelectorAll(".card--wrap"); // get all the card elements
+// let cards = document.querySelectorAll(".card--wrap"); // get all the card elements
 
 export let currentColor = ""; // set global color variable
 
 // -----functions used for the filter event listeners----------
 export function filterAndDisplayColor(color) {
+    let currentCards = document.querySelectorAll(".card--wrap");
     let cardElementArr = [];
-    cards.forEach((card) => {
+
+    let cardListItems = document.querySelectorAll(".card-list-item");
+    if (currentCards.length == 0) {
+        cardListItems.forEach((card) => {
+            if (!card.classList.contains(color)) {
+                card.classList.add("displayNone");
+            } else {
+                card.classList.remove("displayNone");
+                cardElementArr.push(card);
+            }
+        });
+        currentColor = color;
+        return;
+    }
+
+    currentCards.forEach((card) => {
         if (!card.classList.contains(color)) {
             card.classList.add("displayNone");
         } else {
@@ -151,9 +225,25 @@ export function filterAndDisplayColor(color) {
 export function filterAndDisplayType(type) {
     let currentCards = document.querySelectorAll(".card--wrap");
 
-    let cardElementArr = [];
+    let cardListItems = document.querySelectorAll(".card-list-item");
 
-    cards.forEach((card) => {
+    if (currentCards.length == 0) {
+        cardListItems.forEach((card) => {
+            if (card.classList.contains("displayNone") && !card.classList.contains(currentColor)) {
+                return;
+            }
+
+            if (!card.classList.contains(type)) {
+                card.classList.add("displayNone");
+            } else {
+                card.classList.remove("displayNone");
+            }
+        });
+
+        return;
+    }
+
+    currentCards.forEach((card) => {
         if (card.classList.contains("displayNone") && !card.classList.contains(currentColor)) {
             return;
         }

@@ -3,7 +3,12 @@ import {
     filterAndDisplayColor,
     checkTypeFilters,
     currentColor,
+    sortedCube,
+    createListItem,
+    createElement,
 } from "../main.js";
+
+import { allCards } from "../cube/cube.js";
 
 export const FILTER_RED = document.getElementById("filter-red");
 export const FILTER_BLUE = document.getElementById("filter-blue");
@@ -90,4 +95,43 @@ filter_icons.forEach((icon) => {
         }
         icon.classList.add("-active");
     });
+});
+
+const FILTER_STYLE_LIST = document.getElementById("displayStyleList");
+const FILTER_STYLE_CARD = document.getElementById("displayStyleCard");
+
+FILTER_STYLE_LIST.addEventListener("click", () => {
+    let cardImages = document.querySelectorAll(".card--wrap");
+
+    // check if there are card images in the columns --> remove them if there are
+    if (cardImages.length > 0) {
+        cardImages.forEach((image) => {
+            image.remove();
+        });
+
+        // create a list item of every card in the cube
+        for (let i = 0; i < allCards.length; i++) {
+            filterAndDisplayColor(currentColor); // this needs to be here or the list items wont show up when first switching view
+            checkTypeFilters(currentColor);
+            createListItem(sortedCube[i].name);
+        }
+    }
+});
+
+FILTER_STYLE_CARD.addEventListener("click", () => {
+    let cardList = document.querySelectorAll(".card-list-item");
+
+    // check if there are card images in the columns --> remove them if there are
+    if (cardList.length > 0) {
+        cardList.forEach((item) => {
+            item.remove();
+        });
+
+        // create a list item of every card in the cube
+        for (let i = 0; i < allCards.length; i++) {
+            filterAndDisplayColor(currentColor); // this needs to be here or the list items wont show up when first switching view
+            checkTypeFilters(currentColor);
+            createElement(sortedCube[i].name);
+        }
+    }
 });

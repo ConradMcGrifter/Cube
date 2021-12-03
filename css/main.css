@@ -32,6 +32,58 @@ button {
   margin-top: 1rem;
 }
 
+li {
+  list-style: none;
+  cursor: pointer;
+  font-size: clamp(1.2rem, 1vw, 1.6rem);
+  color: #468eaa;
+}
+
+li.blue {
+  color: #468eaa;
+}
+
+li.red {
+  color: #aa4646;
+}
+
+li.white {
+  color: #c4bcb2;
+}
+
+li.green {
+  color: #46aa64;
+}
+
+li.black {
+  color: #905ac2;
+}
+
+li.displayNone {
+  display: none;
+}
+
+li:hover {
+  color: yellow;
+}
+
+li:hover::before {
+  border: solid gold 3px;
+  border-radius: 1.55rem;
+  content: var(--image, url("../images/cardback.jpeg"));
+  background-color: black;
+  position: absolute;
+  z-index: 999;
+  right: -0.5rem;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-box-shadow: 2px 5px 25px black;
+          box-shadow: 2px 5px 25px black;
+  color: white;
+  line-height: 0;
+  pointer-events: none;
+}
+
 #cubeText {
   position: absolute;
   top: -1000rem;
@@ -41,6 +93,11 @@ button {
 #copyClipboard {
   padding: 1rem 2rem;
   background-color: white;
+}
+
+#displayStyleList,
+#displayStyleCard {
+  color: gold;
 }
 
 .card--wrap {
