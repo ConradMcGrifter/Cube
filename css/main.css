@@ -100,6 +100,13 @@ li:hover::before {
   color: gold;
 }
 
+@media only screen and (max-width: 1440px) {
+  #displayStyleList,
+  #displayStyleCard {
+    margin-left: 1rem;
+  }
+}
+
 .card--wrap {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -112,9 +119,12 @@ li:hover::before {
 }
 
 .card--wrap .card {
+  background: url("../images/cardback.jpeg");
+  background-size: cover;
+  background-position: center;
   width: 100%;
+  width: 185px;
   height: 250px;
-  min-width: 160px;
   margin: 0;
   border-radius: 1rem;
   border: solid #0c0c0c;
@@ -130,6 +140,16 @@ li:hover::before {
       grid-template-rows: auto;
   -ms-grid-columns: 1fr 7fr;
       grid-template-columns: 1fr 7fr;
+}
+
+@media only screen and (max-width: 1440px) {
+  .site-grid {
+        grid-template-areas: "s" "m";
+    -ms-grid-rows: auto;
+        grid-template-rows: auto;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
 }
 
 .side-bar {
@@ -183,6 +203,15 @@ li:hover::before {
   top: 1rem;
 }
 
+@media only screen and (max-width: 1440px) {
+  .side-bar-content--wrap {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
 .color-filter--wrap {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -192,6 +221,14 @@ li:hover::before {
   margin: 2rem 0;
   padding: 1rem;
   max-width: 15rem;
+}
+
+@media only screen and (max-width: 1440px) {
+  .color-filter--wrap {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    max-width: unset;
+  }
 }
 
 .color-filter--wrap button {
@@ -217,6 +254,14 @@ li:hover::before {
   padding: 1rem;
 }
 
+@media only screen and (max-width: 1440px) {
+  .radio-buttons--container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
 .radio-buttons--container .radio--wrap {
   color: white;
   display: -webkit-box;
@@ -226,6 +271,12 @@ li:hover::before {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-top: 1rem;
+}
+
+@media only screen and (max-width: 1440px) {
+  .radio-buttons--container .radio--wrap {
+    margin-left: 1rem;
+  }
 }
 
 .radio-buttons--container .radio--wrap input[type="radio"] {
@@ -246,15 +297,6 @@ li:hover::before {
   -ms-grid-columns: (1fr)[6];
       grid-template-columns: repeat(6, 1fr);
   gap: 1rem;
-}
-
-@media only screen and (max-width: 1400px) {
-  .cards--container {
-    -ms-grid-columns: (1fr)[3];
-        grid-template-columns: repeat(3, 1fr);
-    -ms-grid-rows: auto auto;
-        grid-template-rows: auto auto;
-  }
 }
 
 .cards--container header {

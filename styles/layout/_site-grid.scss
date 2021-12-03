@@ -5,6 +5,14 @@
     grid-template-areas: "s m";
     grid-template-rows: auto;
     grid-template-columns: 1fr 7fr;
+
+    @include mobileSize {
+        grid-template-areas:
+            "s"
+            "m";
+        grid-template-rows: auto;
+        grid-template-columns: 1fr;
+    }
 }
 
 .side-bar {

@@ -91,4 +91,7 @@ li {
 #displayStyleList,
 #displayStyleCard {
     color: gold;
+    @include mobileSize {
+        margin-left: 1rem;
+    }
 }

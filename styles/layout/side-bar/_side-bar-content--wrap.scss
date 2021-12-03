@@ -6,6 +6,10 @@
     justify-content: center;
     position: sticky;
     top: 1rem;
+
+    @include mobileSize {
+        flex-direction: row;
+    }
 }
 
 .color-filter--wrap {
@@ -14,6 +18,10 @@
     margin: 2rem 0;
     padding: 1rem;
     max-width: 15rem;
+    @include mobileSize {
+        flex-wrap: nowrap;
+        max-width: unset;
+    }
 
     button {
         margin: 0.25rem;
@@ -35,11 +43,17 @@
 
 .radio-buttons--container {
     padding: 1rem;
+    @include mobileSize {
+        display: flex;
+    }
     .radio--wrap {
         color: white;
         display: flex;
         justify-content: space-between;
         margin-top: 1rem;
+        @include mobileSize {
+            margin-left: 1rem;
+        }
 
         input[type="radio"] {
             margin-left: 1rem;
