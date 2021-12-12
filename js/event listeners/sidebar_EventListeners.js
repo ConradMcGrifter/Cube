@@ -1,12 +1,10 @@
+import { sortedCube, createListItem, createElement } from "../main.js";
 import {
     filterAndDisplayType,
     filterAndDisplayColor,
     checkTypeFilters,
     currentColor,
-    sortedCube,
-    createListItem,
-    createElement,
-} from "../main.js";
+} from "../functions/filter.js";
 
 import { allCards } from "../cube/cube.js";
 

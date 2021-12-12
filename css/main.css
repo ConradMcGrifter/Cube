@@ -107,6 +107,22 @@ li:hover::before {
   }
 }
 
+.card--wrap[data-active="true"] {
+  display: block;
+}
+
+.card--wrap[data-active="false"] {
+  display: none;
+}
+
+.card-list-item[data-active="true"] {
+  display: block;
+}
+
+.card-list-item[data-active="false"] {
+  display: none;
+}
+
 .card--wrap {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -343,10 +359,6 @@ li:hover::before {
 
 .column > .card--wrap > .card:hover {
   border: solid gold 2px;
-}
-
-.column > .card--wrap.displayNone {
-  display: none;
 }
 
 .column > .card--wrap:hover::before {

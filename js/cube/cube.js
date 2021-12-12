@@ -386,7 +386,6 @@ export const artifacts = [
     "Skyclave Sentinel",
 ];
 
-// ---------
 // create card objects for the cards in the cube array
 export let detailedCube = cube
     .map((card) => {
@@ -523,10 +522,10 @@ export let detailedCubeObj = allCards.reduce((acc, card) => {
     return {
         ...acc,
         [card.name]: {
-            ["image"]: card.image,
-            ["cmc"]: card.cmc,
-            ["color"]: card.color,
-            ["type"]: card.type,
+            image: card.image,
+            cmc: card.cmc,
+            color: card.color,
+            type: card.type,
         },
     };
 }, {});

@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 @import "abstracts/mixins", "abstracts/variables";
 @import "base";
+@import "data-attributes/data";
 @import "components/card", "components/card-list-item";
 @import "layout/site-grid";
 @import "layout/side-bar/side-bar-content--wrap";

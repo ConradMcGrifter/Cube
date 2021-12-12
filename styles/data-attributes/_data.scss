@@ -1,0 +1,18 @@
+// instead of using css classes for toggling display, im using data-attributes for things that are handled by javaScript (toggling hide or display a card)
+
+.card--wrap[data-active="true"] {
+    display: block;
+}
+
+.card--wrap[data-active="false"] {
+    display: none;
+}
+//-----------------------------------------
+
+.card-list-item[data-active="true"] {
+    display: block;
+}
+
+.card-list-item[data-active="false"] {
+    display: none;
+}

@@ -27,9 +27,9 @@
             border: solid gold 2px;
         }
 
-        &.displayNone {
-            display: none;
-        }
+        // &.displayNone {
+        //     display: none;
+        // }
 
         &:hover::before {
             border: solid gold 3px;
