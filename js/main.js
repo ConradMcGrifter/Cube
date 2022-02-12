@@ -64,8 +64,8 @@ export function createElement(cardName) {
     // cardWrap.classList.add("displayNone"); // change this css class to a data attribute ex) data-active="false"
     cardWrap.setAttribute("data-active", "false");
 
-    // card.setAttribute("src", `${detailedCubeObj[cardName].image}`);
-    card.setAttribute("src", "../images/cardback.jpeg");
+    card.setAttribute("src", `${detailedCubeObj[cardName].image}`);
+    // card.setAttribute("src", "../images/cardback.jpeg");
 
     // set the url of the pseudo element content property to the image of the card --> gets displayed when a card is hovered
     cardWrap.style.setProperty("--image", `url(${detailedCubeObj[cardName].image})`);
